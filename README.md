@@ -9,4 +9,5 @@ creación, también conocen a sus jugadores y entrenador . Del entrenador se sab
 nombre, apellido y edad.
 
 Diagrama de clases 
+
 ![TPI1-Maven drawio](https://github.com/ulisespallares888/TPIN1-Maven/assets/54750620/e7733660-8a9d-4b3d-8123-84b9c52ed62f)
