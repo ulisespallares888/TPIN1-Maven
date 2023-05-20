@@ -12,7 +12,7 @@ public enum Posiciones {
         this.posicion = posision;
     }
 
-    public String getNombre() {
+    public String getPosicion() {
         return posicion;
     }
 }
