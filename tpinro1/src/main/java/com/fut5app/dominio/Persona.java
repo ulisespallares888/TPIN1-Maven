@@ -1,8 +1,8 @@
 package com.fut5app.dominio;
 
 public abstract class Persona {
-    private String nombre;
-    private  String apellido;
+    protected String nombre;
+    protected   String apellido;
 
     public String getNombre() {
         return nombre;

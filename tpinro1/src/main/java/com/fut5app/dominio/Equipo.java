@@ -1,17 +1,23 @@
 package com.fut5app.dominio;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Equipo {
     private UUID id;
     private String nombre;
-    private Date fechaDeCreacion;
+    private LocalDate fechaDeCreacion;
     private List jugadores = new ArrayList<>();
     private Entrenador entrenador;
 
     public Equipo() {}
 
-    public Equipo(UUID id, String nombre, Date fechaDeCreacion, List<Jugador> jugadores, Entrenador entrenador) {
+    public Equipo(UUID id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fechaDeCreacion = LocalDate.now();
+    }
+    public Equipo(UUID id, String nombre, LocalDate fechaDeCreacion, List<Jugador> jugadores, Entrenador entrenador) {
         this.id = id;
         this.nombre = nombre;
         this.fechaDeCreacion = fechaDeCreacion;
@@ -35,11 +41,11 @@ public class Equipo {
         this.nombre = nombre;
     }
 
-    public Date getFechaDeCreacion() {
+    public LocalDate getFechaDeCreacion() {
         return fechaDeCreacion;
     }
 
-    public void setFechaDeCreacion(Date fechaDeCreacion) {
+    public void setFechaDeCreacion(LocalDate fechaDeCreacion) {
         this.fechaDeCreacion = fechaDeCreacion;
     }
 
@@ -50,7 +56,9 @@ public class Equipo {
     public void setJugadores(Jugador jugador) {
             this.jugadores.add(jugador);
     }
-
+    public void setJugadores(List<Jugador> jugador) {
+        this.jugadores.addAll(jugador);
+    }
     public Entrenador getEntrenador() {
         return entrenador;
     }

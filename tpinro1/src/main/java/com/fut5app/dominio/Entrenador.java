@@ -2,7 +2,7 @@ package com.fut5app.dominio;
 
 import java.util.UUID;
 
-public class Entrenador extends Persona{
+public class Entrenador extends Persona implements IEntrenar{
     private UUID id;
     private int edad;
 
@@ -36,5 +36,10 @@ public class Entrenador extends Persona{
                 "id=" + id +
                 super.toString() +
                 ", edad=" + edad +"} ";
+    }
+
+    @Override
+    public String entrenar() {
+        return "Enrtenar equipo";
     }
 }
