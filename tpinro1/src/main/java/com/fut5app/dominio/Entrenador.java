@@ -1,8 +1,10 @@
 package com.fut5app.dominio;
 
+import com.fut5app.dominio.interfaces.IEntrenar;
+
 import java.util.UUID;
 
-public class Entrenador extends Persona implements IEntrenar{
+public class Entrenador extends Persona implements IEntrenar {
     private UUID id;
     private int edad;
 

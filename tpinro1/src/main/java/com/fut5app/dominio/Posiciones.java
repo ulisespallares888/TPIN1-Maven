@@ -1,5 +1,7 @@
 package com.fut5app.dominio;
 
+import com.fut5app.dominio.interfaces.IEntrenar;
+
 public enum Posiciones implements IEntrenar {
     DEFENSOR ("Defensor") {
         @Override
@@ -26,13 +28,13 @@ public enum Posiciones implements IEntrenar {
         }
     };
 
-    private String posicion;
+    private  String posicion;
 
     Posiciones(String posicion) {
         this.posicion = posicion;
     }
 
-    public String getPosicion() {
+     public String getPosicion() {
         return posicion;
     }
 }

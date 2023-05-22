@@ -12,8 +12,8 @@ public class Equipo {
 
     public Equipo() {}
 
-    public Equipo(UUID id, String nombre) {
-        this.id = id;
+    public Equipo(String nombre) {
+        this.id = UUID.randomUUID();
         this.nombre = nombre;
         this.fechaDeCreacion = LocalDate.now();
     }
@@ -71,7 +71,7 @@ public class Equipo {
     public String toString() {
         String salida = "Equipo{" +
                 "id=" + id +
-                ", nombre='" + nombre + '\'' +
+                ", nombre='" + this.nombre + '\'' +
                 ", fechaDeCreacion=" + fechaDeCreacion +
                 ", entrenador=" + entrenador +", jugadores=";
                 for (Object jugador: jugadores) {
