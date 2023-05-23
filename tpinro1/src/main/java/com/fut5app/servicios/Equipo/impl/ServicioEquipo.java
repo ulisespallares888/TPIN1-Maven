@@ -13,6 +13,8 @@ import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.UUID;
 
+import static com.fut5app.App.*;
+
 public class ServicioEquipo implements IServicioEquipo {
     @Override
     public Equipo crearEquipo() {
@@ -24,12 +26,17 @@ public class ServicioEquipo implements IServicioEquipo {
        equipoNuevo.setNombre(ServicioEntrada.getScanner().nextLine());
        cargarJugadores(equipoNuevo);
        cargarEntrenador(equipoNuevo);
-
-
-        DatosIniciales.agregarEquipo(equipoNuevo);
+       setearTodasLasListas(equipoNuevo);
 
        return equipoNuevo;
     }
+
+    public void setearTodasLasListas(Equipo equipoNuevo){
+        listaEquipos.add(equipoNuevo);
+        listaJugadores.add(equipoNuevo.getJugadores());
+        listaEntrenadores.add(equipoNuevo.getEntrenador());
+    }
+
 
     @Override
     public Equipo buscarEquipo(String nombre) {

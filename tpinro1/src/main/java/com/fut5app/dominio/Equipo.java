@@ -24,6 +24,13 @@ public class Equipo {
         this.jugadores.add(jugadores);
         this.entrenador = entrenador;
     }
+    public Equipo(UUID id, String nombre, LocalDate fechaDeCreacion,  Entrenador entrenador) {
+        this.id = id;
+        this.nombre = nombre;
+        this.fechaDeCreacion = fechaDeCreacion;
+        this.jugadores.add(jugadores);
+        this.entrenador = entrenador;
+    }
 
     public UUID getId() {
         return id;
@@ -73,10 +80,7 @@ public class Equipo {
                 "id=" + id +
                 ", nombre='" + this.nombre + '\'' +
                 ", fechaDeCreacion=" + fechaDeCreacion +
-                ", entrenador=" + entrenador +", jugadores=";
-                for (Object jugador: jugadores) {
-                    salida += jugador.toString();
-                }
+                ", entrenador=" + entrenador +", jugadores=" + jugadores;
         return salida;
     }
 }
