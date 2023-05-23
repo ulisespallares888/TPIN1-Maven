@@ -4,12 +4,13 @@ import com.fut5app.dominio.Equipo;
 import com.fut5app.dominio.Jugador;
 import com.fut5app.dominio.Posiciones;
 import com.fut5app.servicios.Entrada.impl.ServicioEntrada;
-import com.fut5app.servicios.Equipo.impl.ServicioEquipo;
 import com.fut5app.servicios.Jugador.IServicioJugador;
-import com.fut5app.servicios.Posicion.IServicioPosicion;
 import com.fut5app.servicios.Posicion.impl.ServicioPosicion;
 
+import java.util.List;
 import java.util.UUID;
+
+import static com.fut5app.App.listaJugadores;
 
 public class ServicioJugador implements IServicioJugador {
     @Override
@@ -49,12 +50,32 @@ public class ServicioJugador implements IServicioJugador {
 
 
     @Override
-    public Jugador buscarJugador() {
-        return null;
+    public void buscarJugador(String nombreJugador, String nombreEquipo) {
+        Jugador jugadorAux = new Jugador();
+        for (List<Jugador> listaJuga: listaJugadores ) {
+            for (Jugador jugador: listaJuga ) {
+                if(nombreJugador == jugador.getNombre() && nombreEquipo.equals(jugador.getEquipo().getNombre()))
+                    jugadorAux.setNombre(jugador.getNombre());
+                    jugadorAux.setApellido(jugador.getApellido());
+                    jugadorAux.setPosicion(jugador.getPosicion());
+                    jugadorAux.setCapitan(jugador.isCapitan());
+                    jugadorAux.setEquipo(jugador.getEquipo());
+            }
+        }
+        mostrarJugador(jugadorAux);
+    }
+    @Override
+    public void mostrarJugador(Jugador jugadorAux){
+        System.out.println("Nombre : " + jugadorAux.getNombre());
+        System.out.println("Apellido : " + jugadorAux.getApellido());
+        System.out.println("Posicion : " + jugadorAux.getPosicion());
+        if(jugadorAux.isCapitan()){ System.out.println("Es capitan : Si"); }else {System.out.println("Es capitan : No"); }
+        System.out.println("Equipo : " + jugadorAux.getEquipo().getNombre());
     }
 
     @Override
     public Jugador eliminarJugador() {
+
         return null;
     }
 }

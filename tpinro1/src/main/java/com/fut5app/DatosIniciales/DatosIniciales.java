@@ -17,7 +17,6 @@ public class DatosIniciales {
     public static List<Equipo> listaEquipos = new  ArrayList<>();
 
     public static  List<Equipo> devolverEquipos(){
-        //devolverEntrenadores();
         cargarEquipo();
         return listaEquipos;
     }
@@ -54,13 +53,13 @@ public class DatosIniciales {
         listaJugadoresE2.add(new Jugador(UUID.randomUUID(), "Sergio", "Vargas", 1.79, Posiciones.DELANTERO, 27, 10, true, 6, listaEquipos.get(1)));
         listaJugadoresE2.add(new Jugador(UUID.randomUUID(), "Javier", "López", 1.76, Posiciones.MEDIOCAMPISTA, 22, 7, false, 9, listaEquipos.get(1)));
 
-
         setearEquiposConJugadores(listaJugadoresE1,listaJugadoresE2);
         cargarListaJugadores(listaJugadoresE1, listaJugadoresE2);
 
     }
 
     public static void setearEquiposConJugadores(List<Jugador> listaJugadoresE1,List<Jugador> listaJugadoresE2){
+
         listaEquipos.get(0).setJugadores(listaJugadoresE1);
         listaEquipos.get(1).setJugadores(listaJugadoresE2);
     }

@@ -28,7 +28,6 @@ public class Equipo {
         this.id = id;
         this.nombre = nombre;
         this.fechaDeCreacion = fechaDeCreacion;
-        this.jugadores.add(jugadores);
         this.entrenador = entrenador;
     }
 

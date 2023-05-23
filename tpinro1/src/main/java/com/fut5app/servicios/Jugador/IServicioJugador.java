@@ -5,6 +5,7 @@ import com.fut5app.dominio.Jugador;
 
 public interface IServicioJugador {
     Jugador crearJugador(Equipo equipo);
-    Jugador buscarJugador();
+    void buscarJugador(String nombreJugador, String nombreEquipo);
     Jugador eliminarJugador();
+    void mostrarJugador(Jugador jugadorAux);
 }
