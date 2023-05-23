@@ -5,9 +5,7 @@ import com.fut5app.servicios.Posicion.IServicioPosicion;
 
 
 public class ServicioPosicion implements IServicioPosicion {
-
-    public static Posiciones posicionNueva;
-
+    
     public static void mostrarPosiciones(){
         System.out.println("1:Defensor");
         System.out.println("2:Arquero");
@@ -16,22 +14,22 @@ public class ServicioPosicion implements IServicioPosicion {
     }
 
     public static Posiciones crearPosicion(int posicion) {
-
+        Posiciones posicionNueva = null;
         switch (posicion){
             case 1:{
-              Posiciones posicionNueva = Posiciones.DEFENSOR;
-                break;
+               posicionNueva = Posiciones.DEFENSOR;
+              break;
             }
             case 2:{
-                Posiciones posicionNueva = Posiciones.ARQUERO;
+                 posicionNueva = Posiciones.ARQUERO;
                 break;
             }
             case 3:{
-                Posiciones posicionNueva = Posiciones.MEDIOCAMPISTA;
+                 posicionNueva = Posiciones.MEDIOCAMPISTA;
                 break;
             }
             case 4:{
-                Posiciones posicionNueva = Posiciones.DELANTERO;
+                 posicionNueva = Posiciones.DELANTERO;
                 break;
             }
         }

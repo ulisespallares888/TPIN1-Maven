@@ -5,6 +5,7 @@ import com.fut5app.dominio.*;
 import com.fut5app.servicios.*;
 import com.fut5app.servicios.Entrada.impl.ServicioEntrada;
 import com.fut5app.servicios.Equipo.impl.ServicioEquipo;
+import com.fut5app.servicios.Posicion.impl.ServicioPosicion;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -26,9 +27,17 @@ public class App
         ServicioEquipo servicioEquipo = new ServicioEquipo();
         servicioEquipo.crearEquipo();
 
+       // System.out.println(ServicioPosicion.crearPosicion(1));
+
         listaEquipos.forEach(System.out::println);
         listaEntrenadores.forEach(System.out::println);
-        listaJugadores.forEach(System.out::println);
+        listaJugadores.forEach(lista -> {
+            lista.forEach(elemento -> {
+                // Hacer algo con cada elemento
+                System.out.println(elemento);
+            });
+        });
+
 
         ServicioEntrada.closeScanner();
 

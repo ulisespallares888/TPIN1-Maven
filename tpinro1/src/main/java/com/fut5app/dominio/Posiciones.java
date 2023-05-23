@@ -28,7 +28,7 @@ public enum Posiciones implements IEntrenar {
         }
     };
 
-    private  String posicion;
+    private String posicion;
 
     Posiciones(String posicion) {
         this.posicion = posicion;

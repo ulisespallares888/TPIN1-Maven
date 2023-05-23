@@ -2,6 +2,7 @@ package com.fut5app.servicios.Jugador.impl;
 
 import com.fut5app.dominio.Equipo;
 import com.fut5app.dominio.Jugador;
+import com.fut5app.dominio.Posiciones;
 import com.fut5app.servicios.Entrada.impl.ServicioEntrada;
 import com.fut5app.servicios.Equipo.impl.ServicioEquipo;
 import com.fut5app.servicios.Jugador.IServicioJugador;
@@ -24,7 +25,7 @@ public class ServicioJugador implements IServicioJugador {
         jugador.setAltura(ServicioEntrada.getScanner().nextDouble());
         System.out.println("Ingrese posición del jugador");
         ServicioPosicion.mostrarPosiciones();
-        jugador.setPosicion(ServicioPosicion.crearPosicion(ServicioEntrada.getScanner().nextInt()));
+        jugador.setPosicion((Posiciones) ServicioPosicion.crearPosicion(ServicioEntrada.getScanner().nextInt()));
         System.out.println("Ingrese cantidad de goles del jugador");
         jugador.setCantGoles(ServicioEntrada.getScanner().nextInt());
         System.out.println("Ingrese cantidad de partidos del jugador");
