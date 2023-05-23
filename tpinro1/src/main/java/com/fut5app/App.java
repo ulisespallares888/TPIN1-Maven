@@ -13,25 +13,24 @@ import java.util.*;
 
 public class App
 {
-    /*
-    * Arreglar los de la carga de todas las listas
-    */
     public static List<List<Jugador>> listaJugadores = DatosIniciales.devolverJugadores();
     public static List<Entrenador> listaEntrenadores = DatosIniciales.listaEntrenadores;
     public static List<Equipo> listaEquipos = DatosIniciales.listaEquipos;
 
     public static void main( String[] args )
     {
-
         ServicioEntrada.createScanner();
 
         ServicioEquipo servicioEquipo = new ServicioEquipo();
-       // servicioEquipo.crearEquipo();
+        System.out.println(servicioEquipo.crearEquipo());
+
+
+
         Entrenador entrenador = new Entrenador(UUID.randomUUID(),"asdasd","asdasd", 33);
         Equipo equipo = new Equipo(UUID.randomUUID(), "equipo1", LocalDate.now(),entrenador);
         Jugador jugador = new Jugador(UUID.randomUUID(),"asd","asdasd",1.66, Posiciones.ARQUERO, 22,10, true, 9,equipo);
 
-       // ServicioJugador servicioJugador = new ServicioJugador();
+      // ServicioJugador servicioJugador = new ServicioJugador();
 
         equipo.setJugadores(jugador);
         listaEntrenadores.add(entrenador);
@@ -39,9 +38,9 @@ public class App
         listaJugadores.get(0).add(jugador);
 
 
-        servicioEquipo.eliminarEquipo("Boca");
+       // servicioEquipo.eliminarEquipo("Boca");
 
-        servicioEquipo.mostrarEquipo("Boca");
+        //servicioEquipo.mostrarEquipo("Boca");
         /*
 
         listaEntrenadores.forEach(System.out::println);

@@ -1,33 +1,45 @@
 package com.fut5app.servicios.Equipo.impl;
 
+
 import com.fut5app.dominio.Equipo;
 import com.fut5app.servicios.Entrada.impl.ServicioEntrada;
 import com.fut5app.servicios.Entrenador.impl.ServicioEntrenador;
 import com.fut5app.servicios.Equipo.IServicioEquipo;
 import com.fut5app.servicios.Jugador.impl.ServicioJugador;
 import com.fut5app.dominio.Jugador;
+
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
+import java.time.format.DateTimeFormatter;
 
 import static com.fut5app.App.*;
 
 public class ServicioEquipo implements IServicioEquipo {
     @Override
     public Equipo crearEquipo() {
+        System.out.println("****** Carga de equipo ****** ");
         Equipo equipoNuevo = new Equipo();
         equipoNuevo.setId(UUID.randomUUID());
         System.out.println("Ingrese nombre del equipo");
         equipoNuevo.setNombre(ServicioEntrada.getScanner().nextLine());
         System.out.println("Ingrese fecha de creacion del equipo. Formato(DD-MM-AAAA)");
-        String fecha = ServicioEntrada.getScanner().nextLine();
-        //#################################falta feecha de creacion###############################
-        equipoNuevo.setFechaDeCreacion(LocalDate.now());
-
+        equipoNuevo.setFechaDeCreacion(foramtearFecha(ServicioEntrada.getScanner().nextLine()));
+        System.out.println("****** Carga de jugadores ****** ");
         cargarJugadores(equipoNuevo);
+        System.out.println("****** Carga de entrenador ****** ");
         cargarEntrenador(equipoNuevo);
         setearTodasLasListas(equipoNuevo);
        return equipoNuevo;
+    }
+
+    public LocalDate foramtearFecha(String fecha){
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate fechaFormateada = LocalDate.parse(fecha, formatter);
+
+        return fechaFormateada;
     }
 
     public void setearTodasLasListas(Equipo equipoNuevo){

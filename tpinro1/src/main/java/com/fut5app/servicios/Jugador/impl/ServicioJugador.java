@@ -18,6 +18,7 @@ public class ServicioJugador implements IServicioJugador {
         Jugador jugador = new Jugador();
         jugador.setId(UUID.randomUUID());
         jugador.setEquipo(equipo);
+        System.out.println("****** Cargar un jugador ****** ");
         System.out.println("Ingrese nombre del jugador");
         jugador.setNombre(ServicioEntrada.getScanner().nextLine());
         System.out.println("Ingrese apellido del jugador");
@@ -33,8 +34,10 @@ public class ServicioJugador implements IServicioJugador {
         jugador.setCanttPartidos(ServicioEntrada.getScanner().nextInt());
         System.out.println("Ingrese el jugador es capitan. 1: Es capitan 2: No es capitan");
         jugador.setCapitan(opcionesCapitan(ServicioEntrada.getScanner().nextInt()));
-        System.out.println("Ingrese numero de camista del jugador");
+        System.out.println("Ingrese numero de camiseta del jugador");
         jugador.setNroCamiseta(ServicioEntrada.getScanner().nextInt());
+        ServicioEntrada.getScanner().nextLine();
+        System.out.println("--------------------------------");
 
         return jugador;
     }
@@ -54,7 +57,7 @@ public class ServicioJugador implements IServicioJugador {
         Jugador jugadorAux = new Jugador();
         for (List<Jugador> listaJuga: listaJugadores ) {
             for (Jugador jugador: listaJuga ) {
-                if(nombreJugador == jugador.getNombre() && nombreEquipo.equals(jugador.getEquipo().getNombre()))
+                if(jugador.getNombre().equals(nombreJugador) && nombreEquipo.equals(jugador.getEquipo().getNombre()))
                     jugadorAux.setNombre(jugador.getNombre());
                     jugadorAux.setApellido(jugador.getApellido());
                     jugadorAux.setPosicion(jugador.getPosicion());
