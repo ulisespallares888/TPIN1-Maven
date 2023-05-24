@@ -3,9 +3,11 @@ package com.fut5app.servicios.Jugador;
 import com.fut5app.dominio.Equipo;
 import com.fut5app.dominio.Jugador;
 
+import java.util.List;
+
 public interface IServicioJugador {
     Jugador crearJugador(Equipo equipo);
-    void buscarJugador(String nombreJugador, String nombreEquipo);
+    List<Jugador> buscarJugador(String nombreJugador);
     Jugador eliminarJugador();
-    void mostrarJugador(Jugador jugadorAux);
+    void mostrarJugador(String nombreJug);
 }

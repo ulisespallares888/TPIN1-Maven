@@ -51,7 +51,7 @@ public class DatosIniciales {
         listaJugadoresE2.add(new Jugador(UUID.randomUUID(), "Alejandro", "Gómez", 1.75, Posiciones.ARQUERO, 24, 6, true, 11, listaEquipos.get(1)));
         listaJugadoresE2.add(new Jugador(UUID.randomUUID(), "Lucas", "Fernández", 1.82, Posiciones.DEFENSOR, 25, 5, false, 8, listaEquipos.get(1)));
         listaJugadoresE2.add(new Jugador(UUID.randomUUID(), "Sergio", "Vargas", 1.79, Posiciones.DELANTERO, 27, 10, true, 6, listaEquipos.get(1)));
-        listaJugadoresE2.add(new Jugador(UUID.randomUUID(), "Javier", "López", 1.76, Posiciones.MEDIOCAMPISTA, 22, 7, false, 9, listaEquipos.get(1)));
+        listaJugadoresE2.add(new Jugador(UUID.randomUUID(), "Ulises", "López", 1.76, Posiciones.MEDIOCAMPISTA, 22, 7, false, 9, listaEquipos.get(1)));
 
         setearEquiposConJugadores(listaJugadoresE1,listaJugadoresE2);
         cargarListaJugadores(listaJugadoresE1, listaJugadoresE2);

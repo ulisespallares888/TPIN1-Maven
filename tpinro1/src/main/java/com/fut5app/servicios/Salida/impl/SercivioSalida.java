@@ -21,7 +21,7 @@ public class SercivioSalida implements IServicioSalida {
                 archivo.write("*" + jugador.getNombre()+" " + jugador.getApellido()+ "\n");
             }
             archivo.close();
-            System.out.println("El archivo se ha exportado exitosamente.");
+            System.out.println("El archivo .txt se ha exportado exitosamente.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,7 +40,7 @@ public class SercivioSalida implements IServicioSalida {
                 archivo.write("*" + jugador.getNombre()+" " + jugador.getApellido()+ "\n");
             }
             archivo.close();
-            System.out.println("El archivo se ha exportado exitosamente.");
+            System.out.println("El archivo .csv se ha exportado exitosamente.");
         } catch (IOException e) {
             e.printStackTrace();
         }

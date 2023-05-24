@@ -7,6 +7,7 @@ import com.fut5app.servicios.Entrada.impl.ServicioEntrada;
 import com.fut5app.servicios.Jugador.IServicioJugador;
 import com.fut5app.servicios.Posicion.impl.ServicioPosicion;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -53,27 +54,39 @@ public class ServicioJugador implements IServicioJugador {
 
 
     @Override
-    public void buscarJugador(String nombreJugador, String nombreEquipo) {
-        Jugador jugadorAux = new Jugador();
+    public  List<Jugador>  buscarJugador(String nombreJugador) {
+        List<Jugador> listJug = new ArrayList<>();
         for (List<Jugador> listaJuga: listaJugadores ) {
             for (Jugador jugador: listaJuga ) {
-                if(jugador.getNombre().equals(nombreJugador) && nombreEquipo.equals(jugador.getEquipo().getNombre()))
+                if(jugador.getNombre().equals(nombreJugador) ) {
+                    Jugador jugadorAux = new Jugador();
                     jugadorAux.setNombre(jugador.getNombre());
                     jugadorAux.setApellido(jugador.getApellido());
                     jugadorAux.setPosicion(jugador.getPosicion());
                     jugadorAux.setCapitan(jugador.isCapitan());
                     jugadorAux.setEquipo(jugador.getEquipo());
+                    listJug.add(jugadorAux);
+                }
             }
         }
-        mostrarJugador(jugadorAux);
+        return listJug;
     }
     @Override
-    public void mostrarJugador(Jugador jugadorAux){
-        System.out.println("Nombre : " + jugadorAux.getNombre());
-        System.out.println("Apellido : " + jugadorAux.getApellido());
-        System.out.println("Posicion : " + jugadorAux.getPosicion());
-        if(jugadorAux.isCapitan()){ System.out.println("Es capitan : Si"); }else {System.out.println("Es capitan : No"); }
-        System.out.println("Equipo : " + jugadorAux.getEquipo().getNombre());
+    public void mostrarJugador(String nombreJug){
+       List<Jugador> listJug = buscarJugador(nombreJug);
+        if(!listJug.isEmpty()){
+            for (Jugador jugador: listJug ) {
+                System.out.println("Nombre : " + jugador.getNombre());
+                System.out.println("Apellido : " + jugador.getApellido());
+                System.out.println("Posicion : " + jugador.getPosicion());
+                if(jugador.isCapitan()){ System.out.println("Es capitan : Si"); }else {System.out.println("Es capitan : No"); }
+                System.out.println("Equipo : " + jugador.getEquipo().getNombre());
+                System.out.println("---------------");
+            }
+        } else {
+            System.out.println("No exite el jugador ");
+        }
+
     }
 
     @Override
