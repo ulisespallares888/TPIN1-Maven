@@ -7,6 +7,7 @@ import com.fut5app.servicios.Entrada.impl.ServicioEntrada;
 import com.fut5app.servicios.Equipo.impl.ServicioEquipo;
 import com.fut5app.servicios.Jugador.impl.ServicioJugador;
 import com.fut5app.servicios.Posicion.impl.ServicioPosicion;
+import com.fut5app.servicios.Salida.impl.SercivioSalida;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -22,13 +23,13 @@ public class App
         ServicioEntrada.createScanner();
 
         ServicioEquipo servicioEquipo = new ServicioEquipo();
-        System.out.println(servicioEquipo.crearEquipo());
+        //System.out.println(servicioEquipo.crearEquipo());
 
 
 
         Entrenador entrenador = new Entrenador(UUID.randomUUID(),"asdasd","asdasd", 33);
         Equipo equipo = new Equipo(UUID.randomUUID(), "equipo1", LocalDate.now(),entrenador);
-        Jugador jugador = new Jugador(UUID.randomUUID(),"asd","asdasd",1.66, Posiciones.ARQUERO, 22,10, true, 9,equipo);
+        Jugador jugador = new Jugador(UUID.randomUUID(),"ulises","pallares",1.66, Posiciones.ARQUERO, 22,10, true, 9,equipo);
 
       // ServicioJugador servicioJugador = new ServicioJugador();
 
@@ -37,6 +38,10 @@ public class App
         listaEquipos.add(equipo);
         listaJugadores.get(0).add(jugador);
 
+
+        SercivioSalida sercivioSalida = new SercivioSalida();
+        sercivioSalida.exportarTxt(listaEquipos.get(0));
+        sercivioSalida.exportarCsv(listaEquipos.get(0));
 
        // servicioEquipo.eliminarEquipo("Boca");
 
