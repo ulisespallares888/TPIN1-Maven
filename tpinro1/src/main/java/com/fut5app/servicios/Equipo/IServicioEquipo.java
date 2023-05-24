@@ -12,4 +12,9 @@ public interface IServicioEquipo {
     void cargarJugadores(Equipo equipo);
 
     void mostrarEquipoCapitan(String equipo);
+
+    void mostrarEquipoOrdenadoPorNombre(String equipoNombre);
+
+    void mostrarEquipoOrdenadoPorCamiseta(String equipoNombre);
+    void mostrarEquipoOrdenadoPorPosicionYCamiseta(String equipoNombre);
 }

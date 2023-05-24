@@ -7,11 +7,12 @@ import com.fut5app.servicios.Entrenador.impl.ServicioEntrenador;
 import com.fut5app.servicios.Equipo.IServicioEquipo;
 import com.fut5app.servicios.Jugador.impl.ServicioJugador;
 import com.fut5app.dominio.Jugador;
+import com.fut5app.servicios.Salida.impl.SercivioSalida;
 
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.time.format.DateTimeFormatter;
 
 import static com.fut5app.App.*;
@@ -117,4 +118,62 @@ public class ServicioEquipo implements IServicioEquipo {
           System.out.println("No se encontro el equipo");
       }
     }
+    @Override
+    public void mostrarEquipoOrdenadoPorNombre(String equipoNombre){
+        Equipo equipo = buscarEquipo(equipoNombre);
+        if(equipo.getNombre() != null){
+            List<Jugador> listaOrdenada = (equipo.getJugadores()
+                    .stream()
+                    .sorted((p1, p2) -> p1.getNombre().compareTo(p2.getNombre()))
+                    .collect(Collectors.toList()));
+            System.out.println("Equipo : " + equipo.getNombre());
+            System.out.println("Entrenador : " + equipo.getEntrenador().getNombre());
+            System.out.print("Jugadores: ");
+            for (Jugador jugador: listaOrdenada ) {
+                System.out.print(jugador.getNombre()+ " ");
+            }
+        } else {
+            System.out.println("No existe el equipo");
+        }
+    }
+
+    @Override
+    public void mostrarEquipoOrdenadoPorCamiseta(String equipoNombre){
+        Equipo equipo = buscarEquipo(equipoNombre);
+        if(equipo.getNombre() != null){
+            List<Jugador> listaOrdenada = (equipo.getJugadores()
+                    .stream()
+                    .sorted((p1, p2) -> Integer.compare(p1.getNroCamiseta(),p2.getNroCamiseta()))
+                    .collect(Collectors.toList()));
+            System.out.println("Equipo : " + equipo.getNombre());
+            System.out.println("Entrenador : " + equipo.getEntrenador().getNombre());
+            System.out.print("Jugadores: ");
+            for (Jugador jugador:listaOrdenada ) {
+                System.out.print(jugador.getNombre()+ " ");
+            }
+        } else {
+            System.out.println("No existe el equipo");
+        }
+    }
+
+    @Override
+    public void mostrarEquipoOrdenadoPorPosicionYCamiseta(String equipoNombre){
+        Equipo equipo =  buscarEquipo(equipoNombre);
+
+        if(equipo.getNombre() != null){
+            List<Jugador> listaOrdenada = equipo.getJugadores();
+            listaOrdenada.sort(Comparator.comparing(Jugador::getPosicion).thenComparing(Jugador::getNroCamiseta));
+            System.out.println("Equipo : " + equipo.getNombre());
+            System.out.println("Entrenador : " + equipo.getEntrenador().getNombre());
+            System.out.print("Jugadores: ");
+            for (Jugador jugador: listaOrdenada ) {
+                System.out.print(jugador.getNombre()+ " ");
+            }
+        } else {
+            System.out.println("No existe el equipo");
+        }
+    }
+
+
+
 }

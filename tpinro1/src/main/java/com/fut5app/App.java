@@ -38,7 +38,7 @@ public class App
         listaEquipos.add(equipo);
         listaJugadores.get(0).add(jugador);
 
-        servicioJugador.mostrarJugador("Ulises");
+        //servicioJugador.mostrarJugador("Ulises");
 
         //SercivioSalida sercivioSalida = new SercivioSalida();
         //sercivioSalida.exportarTxt(listaEquipos.get(0));
@@ -46,7 +46,8 @@ public class App
 
        // servicioEquipo.eliminarEquipo("Boca");
 
-        //servicioEquipo.mostrarEquipo("Boca");
+       // servicioEquipo.mostrarEquipoOrdenadoPorNombre("Boca");
+        servicioEquipo.mostrarEquipoOrdenadoPorPosicionYCamiseta("Boca");
         /*
 
         listaEntrenadores.forEach(System.out::println);
