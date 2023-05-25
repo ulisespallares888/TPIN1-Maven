@@ -1,14 +1,13 @@
 package com.fut5app.DatosIniciales;
 
-import com.fut5app.dominio.Entrenador;
-import com.fut5app.dominio.Equipo;
-import com.fut5app.dominio.Jugador;
-import com.fut5app.dominio.Posiciones;
+import com.fut5app.Dominio.Entrenador;
+import com.fut5app.Dominio.Equipo;
+import com.fut5app.Dominio.Jugador;
+import com.fut5app.Dominio.Posiciones;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.HashMap;
 import java.util.UUID;
 
 public class DatosIniciales {
