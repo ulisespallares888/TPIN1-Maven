@@ -1,6 +1,6 @@
 Equipo: Boca
 Jugadores: 
-*Martin Palermo
 *Pablo Alonso
-*Diego Martínez
+*Martin Palermo
 *Andrés López
+*Diego Martínez

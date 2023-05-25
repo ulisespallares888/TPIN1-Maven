@@ -9,9 +9,9 @@ import java.io.IOException;
 
 public class SercivioSalida implements IServicioSalida {
     @Override
-    public void exportarTxt(Equipo equipo) {
+    public void exportarEquipoTxt(Equipo equipo) {
         String nombreArchivo = "Jugadores.txt";
-        String ruta = "src\\main\\java\\com\\fut5app\\servicios\\Salida\\Archivos\\" + nombreArchivo;
+        String ruta = "src\\main\\java\\com\\fut5app\\Resources\\ArchivoSalida\\" + nombreArchivo;
 
         try {
             FileWriter archivo = new FileWriter(ruta);
@@ -30,9 +30,9 @@ public class SercivioSalida implements IServicioSalida {
 
 
     @Override
-    public void exportarCsv(Equipo equipo) {
+    public void exportarEquipoCsv(Equipo equipo) {
         String nombreArchivo = "Jugadores.csv";
-        String ruta = "src\\main\\java\\com\\fut5app\\servicios\\Salida\\Archivos\\" + nombreArchivo;
+        String ruta = "src\\main\\java\\com\\fut5app\\Resources\\ArchivoSalida\\" + nombreArchivo;
         try {
             FileWriter archivo = new FileWriter(ruta);
             archivo.write("Equipo: " + equipo.getNombre()+ "\n");

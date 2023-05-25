@@ -23,20 +23,22 @@ public class App
         ServicioEntrada.createScanner();
 
         ServicioEquipo servicioEquipo = new ServicioEquipo();
-        //System.out.println(servicioEquipo.crearEquipo());
+        System.out.println(servicioEquipo.crearEquipo());
 
 
 
         Entrenador entrenador = new Entrenador(UUID.randomUUID(),"asdasd","asdasd", 33);
-        Equipo equipo = new Equipo(UUID.randomUUID(), "equipo1", LocalDate.now(),entrenador);
+        Equipo equipo = new Equipo(UUID.randomUUID(), "equipo", LocalDate.now(),entrenador);
         Jugador jugador = new Jugador(UUID.randomUUID(),"Ulises","pallares",1.66, Posiciones.ARQUERO, 22,10, true, 9,equipo);
 
+        List<Jugador> listajug = new ArrayList<>();
+        listajug.add(jugador);
        ServicioJugador servicioJugador = new ServicioJugador();
 
         equipo.setJugadores(jugador);
         listaEntrenadores.add(entrenador);
         listaEquipos.add(equipo);
-        listaJugadores.get(0).add(jugador);
+        listaJugadores.add(listajug);
 
         //servicioJugador.mostrarJugador("Ulises");
 
@@ -47,9 +49,18 @@ public class App
        // servicioEquipo.eliminarEquipo("Boca");
 
        // servicioEquipo.mostrarEquipoOrdenadoPorNombre("Boca");
-        servicioEquipo.mostrarEquipoOrdenadoPorPosicionYCamiseta("Boca");
-        /*
+        //servicioEquipo.mostrarEquipoOrdenadoPorPosicionYCamiseta("Boca");
 
+
+        listaEquipos.forEach(System.out::println);
+        listaEntrenadores.forEach(System.out::println);
+        listaJugadores.forEach(System.out::println);
+
+        System.out.println("---------------------------------");
+
+        servicioEquipo.eliminarEquipo("equipo");
+
+        listaEquipos.forEach(System.out::println);
         listaEntrenadores.forEach(System.out::println);
         listaJugadores.forEach(lista -> {
             lista.forEach(elemento -> {
@@ -57,7 +68,8 @@ public class App
                 System.out.println(elemento);
             });
         });
-        */
+
+
 
 
 

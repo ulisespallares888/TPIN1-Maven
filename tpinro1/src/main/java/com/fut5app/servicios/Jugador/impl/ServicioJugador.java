@@ -27,7 +27,9 @@ public class ServicioJugador implements IServicioJugador {
         System.out.println("Ingrese altura del jugador");
         jugador.setAltura(ServicioEntrada.getScanner().nextDouble());
         System.out.println("Ingrese posición del jugador");
-        ServicioPosicion.mostrarPosiciones();
+
+        ServicioPosicion.mostrarPosiciones(ServicioPosicion.formacionEligida);
+
         jugador.setPosicion((Posiciones) ServicioPosicion.crearPosicion(ServicioEntrada.getScanner().nextInt()));
         System.out.println("Ingrese cantidad de goles del jugador");
         jugador.setCantGoles(ServicioEntrada.getScanner().nextInt());

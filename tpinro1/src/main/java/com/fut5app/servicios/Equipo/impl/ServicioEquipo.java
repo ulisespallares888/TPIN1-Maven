@@ -7,6 +7,7 @@ import com.fut5app.servicios.Entrenador.impl.ServicioEntrenador;
 import com.fut5app.servicios.Equipo.IServicioEquipo;
 import com.fut5app.servicios.Jugador.impl.ServicioJugador;
 import com.fut5app.dominio.Jugador;
+import com.fut5app.servicios.Posicion.impl.ServicioPosicion;
 import com.fut5app.servicios.Salida.impl.SercivioSalida;
 
 
@@ -27,7 +28,11 @@ public class ServicioEquipo implements IServicioEquipo {
         equipoNuevo.setNombre(ServicioEntrada.getScanner().nextLine());
         System.out.println("Ingrese fecha de creacion del equipo. Formato(DD-MM-AAAA)");
         equipoNuevo.setFechaDeCreacion(foramtearFecha(ServicioEntrada.getScanner().nextLine()));
+
+        ServicioPosicion.mostrarFormaciones();
+        ServicioPosicion.elegirFomacion(ServicioEntrada.getScanner().nextInt());
         System.out.println("****** Carga de jugadores ****** ");
+        ServicioEntrada.getScanner().nextLine();
         cargarJugadores(equipoNuevo);
         System.out.println("****** Carga de entrenador ****** ");
         cargarEntrenador(equipoNuevo);
@@ -98,7 +103,7 @@ public class ServicioEquipo implements IServicioEquipo {
     @Override
     public void cargarJugadores(Equipo equipo){
         ServicioJugador servicioJugador = new ServicioJugador();
-        for (int i=0; i<2; i++){
+        for (int i=0; i<5; i++){
            equipo.setJugadores(servicioJugador.crearJugador(equipo));
         }
     }
@@ -111,12 +116,15 @@ public class ServicioEquipo implements IServicioEquipo {
     }
     @Override
     public void eliminarEquipo(String nombre) {
-      boolean equipoEiminado = listaEquipos.remove(buscarEquipo(nombre));
-      if(equipoEiminado){
-          System.out.println("Equipo eliminado");
-      } else {
-          System.out.println("No se encontro el equipo");
-      }
+        listaJugadores.remove(buscarEquipo(nombre).getJugadores());
+        listaEntrenadores.remove(buscarEquipo(nombre).getEntrenador());
+        boolean equipoEiminado = listaEquipos.remove(buscarEquipo(nombre));
+
+        if(equipoEiminado){
+            System.out.println("Equipo eliminado");
+        } else {
+            System.out.println("No se encontro el equipo");
+        }
     }
     @Override
     public void mostrarEquipoOrdenadoPorNombre(String equipoNombre){
