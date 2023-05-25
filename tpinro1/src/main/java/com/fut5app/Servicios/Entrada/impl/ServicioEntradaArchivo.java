@@ -15,9 +15,7 @@ public class ServicioEntradaArchivo implements IServicioEntrada {
 
     public List<Jugador> importarJugadores(String archivo, Equipo equipo) {
 
-        String ruta = "src\\main\\java\\com\\fut5app\\Resources\\ArchivoEntrada\\" + archivo;
-
-        ServicioEntrada.setScannerDeArchivo(ruta);
+        ServicioEntrada.setScannerDeArchivo(archivo);
 
         List<Jugador> listaJug = new ArrayList<>();
         List<String> listasplited = new ArrayList<>();

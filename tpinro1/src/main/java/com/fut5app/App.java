@@ -70,7 +70,7 @@ public class App
         });
 */
         ServicioEntradaArchivo servicioEntradaArchivo = new  ServicioEntradaArchivo();
-        servicioEntradaArchivo.importarJugadores("Jugadores.csv",equipo).forEach(System.out::println);
+        servicioEntradaArchivo.importarJugadores(ServicioEntrada.getScanner().nextLine(),equipo).forEach(System.out::println);
 
        // SercivioSalida sercivioSalida = new SercivioSalida();
         //sercivioSalida.exportarEquipoTxt(listaEquipos.get(0));
