@@ -5,48 +5,53 @@ import com.fut5app.Dominio.Jugador;
 import com.fut5app.Dominio.Posiciones;
 import com.fut5app.Servicios.Entrada.IServicioEntrada;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.UUID;
 
 
 public class ServicioEntradaArchivo implements IServicioEntrada {
 
 
-    public List<Jugador> importarJugadores(String archivo, Equipo equipo) {
-
-        ServicioEntrada.setScannerDeArchivo(archivo);
-
+    public List<Jugador> importarJugadores(String archivoRuta, Equipo equipo) {
         List<Jugador> listaJug = new ArrayList<>();
         List<String> listasplited = new ArrayList<>();
+        try {
+            File archivo = new File(archivoRuta);
+            ServicioEntrada.scanner = new Scanner(archivo);
 
-        while (ServicioEntrada.getScanner().hasNextLine()) {
+            while (ServicioEntrada.getScanner().hasNextLine()) {
+                Jugador jugador = new Jugador();
+                String linea = ServicioEntrada.getScanner().nextLine();
+                String[] datosArray = linea.split(",");
+                for (String dato : datosArray) {
+                    listasplited.add(dato);
+                }
+                jugador.setId(UUID.randomUUID());
+                jugador.setNombre(listasplited.get(0));
+                jugador.setApellido(listasplited.get(1));
+                jugador.setAltura(Double.parseDouble(listasplited.get(2)));
+                jugador.setPosicion(Posiciones.valueOf(listasplited.get(3)));
+                jugador.setCantGoles(Integer.parseInt(listasplited.get(4)));
+                jugador.setNroCamiseta(Integer.parseInt(listasplited.get(5)));
+                jugador.setCapitan(Boolean.parseBoolean(listasplited.get(6)));
+                jugador.setNroCamiseta(Integer.parseInt(listasplited.get(7)));
+                jugador.setEquipo(equipo);
+                listaJug.add(jugador);
 
-            Jugador jugador = new Jugador();
-            String linea = ServicioEntrada.getScanner().nextLine();
-            String[] datosArray = linea.split(",");
-            for (String dato : datosArray) {
-                listasplited.add(dato);
+                listasplited.clear();
             }
-            jugador.setId(UUID.randomUUID());
-            jugador.setNombre(listasplited.get(0));
-            jugador.setApellido(listasplited.get(1));
-            jugador.setAltura(Double.parseDouble(listasplited.get(2)));
-            jugador.setPosicion(Posiciones.valueOf(listasplited.get(3)));
-            jugador.setCantGoles(Integer.parseInt(listasplited.get(4)));
-            jugador.setNroCamiseta(Integer.parseInt(listasplited.get(5)));
-            jugador.setCapitan(Boolean.parseBoolean(listasplited.get(6)));
-            jugador.setNroCamiseta(Integer.parseInt(listasplited.get(7)));
-            jugador.setEquipo(equipo);
-            listaJug.add(jugador);
 
-            listasplited.clear();
+            ServicioEntrada.closeScanner();
+
+            return listaJug;
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
         }
-
-        ServicioEntrada.closeScanner();
         return listaJug;
-        }
-
-
     }
+}
 

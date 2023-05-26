@@ -3,6 +3,7 @@ package com.fut5app.Servicios.Equipo.impl;
 
 import com.fut5app.Dominio.Equipo;
 import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
+import com.fut5app.Servicios.Entrada.impl.ServicioEntradaArchivo;
 import com.fut5app.Servicios.Entrenador.impl.ServicioEntrenador;
 import com.fut5app.Servicios.Equipo.IServicioEquipo;
 import com.fut5app.Servicios.Jugador.impl.ServicioJugador;
@@ -28,16 +29,32 @@ public class ServicioEquipo implements IServicioEquipo {
         System.out.println("Ingrese fecha de creacion del equipo. Formato(DD-MM-AAAA)");
         equipoNuevo.setFechaDeCreacion(foramtearFecha(ServicioEntrada.getScanner().nextLine()));
 
-        ServicioPosicion.mostrarFormaciones();
-        ServicioPosicion.elegirFomacion(ServicioEntrada.getScanner().nextInt());
-        System.out.println("****** Carga de jugadores ****** ");
-        ServicioEntrada.getScanner().nextLine();
-        cargarJugadores(equipoNuevo);
+        System.out.println("Tipo de carga");
+        System.out.println("1 : Maual 2: Por importacion");
+        String opcion = ServicioEntrada.getScanner().nextLine();
+
+        if( opcion.equals("1")){
+            ServicioPosicion.mostrarFormaciones();
+            ServicioPosicion.elegirFomacion(ServicioEntrada.getScanner().nextInt());
+            System.out.println("****** Carga de jugadores ****** ");
+            ServicioEntrada.getScanner().nextLine();
+            cargarJugadores(equipoNuevo);
+        } else{
+            System.out.println("El formato del archvo debe ser nombre, apellido, ");
+            ServicioEntradaArchivo servicioEntradaArchivo = new ServicioEntradaArchivo();
+            equipoNuevo.setJugadores(servicioEntradaArchivo.importarJugadores(ServicioEntrada.getScanner().nextLine(),equipoNuevo));
+            equipoNuevo.getJugadores().forEach(System.out::println);
+            ServicioEntrada.createScanner();
+        }
+
+
         System.out.println("****** Carga de entrenador ****** ");
         cargarEntrenador(equipoNuevo);
         setearTodasLasListas(equipoNuevo);
        return equipoNuevo;
     }
+
+
 
     public LocalDate foramtearFecha(String fecha){
 

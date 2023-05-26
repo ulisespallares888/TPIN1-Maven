@@ -8,9 +8,6 @@ public interface IServicioEntrada {
         return null;
     };
 
-    static Scanner setScannerDeArchivo(String rutaArchivo){
-        return null;
-    }
 
     static void closeScanner(){};
 

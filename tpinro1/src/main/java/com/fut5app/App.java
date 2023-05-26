@@ -21,8 +21,8 @@ public class App
     {
         ServicioEntrada.createScanner();
 
-       // ServicioEquipo servicioEquipo = new ServicioEquipo();
-        //System.out.println(servicioEquipo.crearEquipo());
+        ServicioEquipo servicioEquipo = new ServicioEquipo();
+         System.out.println(servicioEquipo.crearEquipo());
 
 
 
@@ -39,10 +39,10 @@ public class App
         listaEquipos.add(equipo);
         listaJugadores.add(listajug);
 
-        //servicioJugador.mostrarJugador("Ulises");
+        servicioJugador.mostrarJugador("Ulises");
 
-        SercivioSalida sercivioSalida = new SercivioSalida();
-        sercivioSalida.exportarEquipoCsv(listaEquipos.get(0));
+        //SercivioSalida sercivioSalida = new SercivioSalida();
+        //sercivioSalida.exportarEquipoCsv(listaEquipos.get(0));
 
         //sercivioSalida.exportarCsv(listaEquipos.get(0));
 
@@ -69,8 +69,8 @@ public class App
             });
         });
 */
-        ServicioEntradaArchivo servicioEntradaArchivo = new  ServicioEntradaArchivo();
-        servicioEntradaArchivo.importarJugadores(ServicioEntrada.getScanner().nextLine(),equipo).forEach(System.out::println);
+        //ServicioEntradaArchivo servicioEntradaArchivo = new  ServicioEntradaArchivo();
+        //servicioEntradaArchivo.importarJugadores(ServicioEntrada.getScanner().nextLine(),equipo);
 
        // SercivioSalida sercivioSalida = new SercivioSalida();
         //sercivioSalida.exportarEquipoTxt(listaEquipos.get(0));
