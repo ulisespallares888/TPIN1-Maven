@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IServicioJugador {
     Jugador crearJugador(Equipo equipo);
-    List<Jugador> buscarJugador(String nombreJugador);
+
     void eliminarJugador();
     void mostrarJugador(String nombreJug);
 }

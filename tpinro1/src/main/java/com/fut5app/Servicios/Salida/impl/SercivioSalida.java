@@ -20,7 +20,7 @@ import java.util.UUID;
 
 public class SercivioSalida implements IServicioSalida {
 
-    @Override
+
     public void exportarAchivo(Equipo equipo){
         System.out.println("Ingrese una opcion");
         System.out.println("1 : Exportar archivo tipo txt");
@@ -46,8 +46,8 @@ public class SercivioSalida implements IServicioSalida {
     }
 
 
-    @Override
-    public void exportarJugadoresTxt(Equipo equipo){
+
+    private void exportarJugadoresTxt(Equipo equipo){
 
         String nombreArchivo = equipo.getNombre() + ".txt";
         String ruta = "src\\main\\java\\com\\fut5app\\Resources\\ArchivoSalida\\" + nombreArchivo;
@@ -81,7 +81,7 @@ public class SercivioSalida implements IServicioSalida {
 
 
 
-    @Override
+
     public void exportarJugadoresCsv(Equipo equipo){
 
         String nombreArchivo = equipo.getNombre() + ".csv";

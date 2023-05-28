@@ -1,4 +1,5 @@
-Pablo,Alonso,1.66,ARQUERO,22,10,true,9
-Martin,Palermo,1.66,DEFENSOR,22,10,true,9
-Andrés,López,1.82,DELANTERO,23,8,false,4
+Pablo,Alonso,1.66,ARQUERO,22,10,false,1
+Martin,Palermo,1.66,DEFENSOR,22,10,false,12
+Andrés,López,1.82,DEFENSOR,23,8,false,14
 Diego,Martínez,1.79,MEDIOCAMPISTA,26,9,true,7
+Elias,Martínez,1.79,DELANTERO,26,9,false,10

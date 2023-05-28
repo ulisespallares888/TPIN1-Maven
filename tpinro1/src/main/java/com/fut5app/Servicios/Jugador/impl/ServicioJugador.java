@@ -47,7 +47,7 @@ public class ServicioJugador implements IServicioJugador {
         return jugador;
     }
 
-    public int controlCamisetas(Equipo equipo, int numeroCamiseta){
+    private int controlCamisetas(Equipo equipo, int numeroCamiseta){
 
         boolean mismaCamiseta = false;
         boolean seguir = true;
@@ -69,7 +69,7 @@ public class ServicioJugador implements IServicioJugador {
         return  numeroCamiseta;
     }
 
-    public void controlCapitan(Equipo equipo, Jugador jugador){
+    private void controlCapitan(Equipo equipo, Jugador jugador){
 
         boolean isCapitan = false;
 
@@ -91,8 +91,8 @@ public class ServicioJugador implements IServicioJugador {
     }
 
 
-    @Override
-    public  List<Jugador>  buscarJugador(String nombreJugador) {
+
+    private List<Jugador>  buscarJugador(String nombreJugador) {
         List<Jugador> listJug = new ArrayList<>();
         for (Equipo equipos: listaEquipos ) {
             for (Jugador jugador: equipos.getJugadores() ) {

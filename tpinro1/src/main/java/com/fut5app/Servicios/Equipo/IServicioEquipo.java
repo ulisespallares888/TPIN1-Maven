@@ -9,7 +9,7 @@ public interface IServicioEquipo {
     void eliminarEquipo(String nombre);
     void cargarEntrenador(Equipo equipo);
 
-    void cargarJugadores(Equipo equipo);
+     void cargarJugadores(Equipo equipo);
 
     void mostrarEquipoCapitan(String equipo);
 

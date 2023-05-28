@@ -38,7 +38,7 @@ public class ServicioEquipo implements IServicioEquipo {
     }
 
 
-    public void establecerTipoDeCarga(Equipo equipoNuevo){
+    private void establecerTipoDeCarga(Equipo equipoNuevo){
         System.out.println("Tipo de carga");
         System.out.println("1 : Maualmente ");
         System.out.println("2 : Por importacion");
@@ -59,7 +59,7 @@ public class ServicioEquipo implements IServicioEquipo {
         }
     }
 
-    public LocalDate foramtearFecha(String fecha){
+    private LocalDate foramtearFecha(String fecha){
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate fechaFormateada = LocalDate.parse(fecha, formatter);
@@ -67,7 +67,7 @@ public class ServicioEquipo implements IServicioEquipo {
         return fechaFormateada;
     }
 
-    public void setearTodasLasListas(Equipo equipoNuevo){
+    private void setearTodasLasListas(Equipo equipoNuevo){
         listaEquipos.add(equipoNuevo);
 
     }
@@ -157,7 +157,7 @@ public class ServicioEquipo implements IServicioEquipo {
         }
     }
 
-    public  void mostrarEquipoOrdenado(Equipo equipo, List<Jugador> listaOrdenada){
+    private  void mostrarEquipoOrdenado(Equipo equipo, List<Jugador> listaOrdenada){
         System.out.println("Equipo : " + equipo.getNombre());
         System.out.println("Entrenador : " + equipo.getEntrenador().getNombre());
         System.out.println("Jugadores: ");

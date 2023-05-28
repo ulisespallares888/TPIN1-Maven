@@ -8,20 +8,20 @@ import java.util.List;
 
 
 public class ServicioPosicion implements IServicioPosicion {
-    public static List< Posiciones> listaFormacion211 = new ArrayList<>();
-    public static List< Posiciones>  listaFormacion121 =  new ArrayList<>();
-    public static List< Posiciones>  listaFormacion22 =  new ArrayList<>();
-    public static List<List<Posiciones>> listaDeFormaciones = new ArrayList<>();
+    private static List< Posiciones> listaFormacion211 = new ArrayList<>();
+    private static List< Posiciones>  listaFormacion121 =  new ArrayList<>();
+    private static List< Posiciones>  listaFormacion22 =  new ArrayList<>();
+    private static List<List<Posiciones>> listaDeFormaciones = new ArrayList<>();
     public static List< Posiciones>  formacionEligida =  new ArrayList<>();
     public static boolean posicionCreada = false;
 
-    public void cargarFormaciones(){
+    private void cargarFormaciones(){
         listaDeFormaciones.add(listaFormacion211);
         listaDeFormaciones.add(listaFormacion121);
         listaDeFormaciones.add(listaFormacion22);
     }
 
-    public static List<Posiciones>  cargarFormacion211(){
+    private static List<Posiciones>  cargarFormacion211(){
         listaFormacion211.add(Posiciones.DEFENSOR);
         listaFormacion211.add(Posiciones.DEFENSOR);
         listaFormacion211.add(Posiciones.ARQUERO);
@@ -29,7 +29,7 @@ public class ServicioPosicion implements IServicioPosicion {
         listaFormacion211.add(Posiciones.DELANTERO);
         return listaFormacion211;
     }
-    public static List<Posiciones> cargarFormacion121(){
+    private static List<Posiciones> cargarFormacion121(){
         listaFormacion121.add( Posiciones.DEFENSOR);
         listaFormacion121.add( Posiciones.ARQUERO);
         listaFormacion121.add( Posiciones.MEDIOCAMPISTA);
@@ -37,7 +37,7 @@ public class ServicioPosicion implements IServicioPosicion {
         listaFormacion121.add( Posiciones.DELANTERO);
         return listaFormacion121;
     }
-    public static List<Posiciones>  cargarFormacion22(){
+    private static List<Posiciones>  cargarFormacion22(){
         listaFormacion22.add( Posiciones.ARQUERO);
         listaFormacion22.add( Posiciones.MEDIOCAMPISTA);
         listaFormacion22.add( Posiciones.MEDIOCAMPISTA);
@@ -47,7 +47,7 @@ public class ServicioPosicion implements IServicioPosicion {
     }
 
 
-    public static List<Posiciones> cargarPosiciones(int formacion){
+    private static List<Posiciones> cargarPosiciones(int formacion){
         if(!posicionCreada) {
             if (formacion == 1) {
                 return cargarFormacion211();
