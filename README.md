@@ -7,10 +7,3 @@ posición en la que juega, cantidad de goles, cantidad de partidos, si es capit�
 número de camiseta y el equipo al que pertenece. Los equipos tienen un nombre, fecha de
 creación, también conocen a sus jugadores y entrenador . Del entrenador se sabe su
 nombre, apellido y edad.
-
-Diagrama de clases 
-
-https://drive.google.com/file/d/1tfWyXHBLRZZCEWrAHRjZneRyJpoHQ_5y/view?usp=sharing
-
-
-
