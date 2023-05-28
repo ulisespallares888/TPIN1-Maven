@@ -8,6 +8,6 @@ import java.util.List;
 public interface IServicioJugador {
     Jugador crearJugador(Equipo equipo);
     List<Jugador> buscarJugador(String nombreJugador);
-    Jugador eliminarJugador();
+    void eliminarJugador();
     void mostrarJugador(String nombreJug);
 }

@@ -4,6 +4,7 @@ import com.fut5app.Dominio.Equipo;
 import com.fut5app.Dominio.Jugador;
 import com.fut5app.Dominio.Posiciones;
 import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
+import com.fut5app.Servicios.Equipo.impl.ServicioEquipo;
 import com.fut5app.Servicios.Jugador.IServicioJugador;
 import com.fut5app.Servicios.Posicion.impl.ServicioPosicion;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.fut5app.App.listaJugadores;
+import static com.fut5app.App.listaEquipos;
 
 public class ServicioJugador implements IServicioJugador {
     @Override
@@ -58,16 +59,10 @@ public class ServicioJugador implements IServicioJugador {
     @Override
     public  List<Jugador>  buscarJugador(String nombreJugador) {
         List<Jugador> listJug = new ArrayList<>();
-        for (List<Jugador> listaJuga: listaJugadores ) {
-            for (Jugador jugador: listaJuga ) {
+        for (Equipo equipos: listaEquipos ) {
+            for (Jugador jugador: equipos.getJugadores() ) {
                 if(jugador.getNombre().equals(nombreJugador) ) {
-                    Jugador jugadorAux = new Jugador();
-                    jugadorAux.setNombre(jugador.getNombre());
-                    jugadorAux.setApellido(jugador.getApellido());
-                    jugadorAux.setPosicion(jugador.getPosicion());
-                    jugadorAux.setCapitan(jugador.isCapitan());
-                    jugadorAux.setEquipo(jugador.getEquipo());
-                    listJug.add(jugadorAux);
+                    listJug.add(jugador);
                 }
             }
         }
@@ -93,8 +88,33 @@ public class ServicioJugador implements IServicioJugador {
     }
 
     @Override
-    public Jugador eliminarJugador() {
+    public void eliminarJugador() {
+        System.out.println("Ingrese nombre del jugador.");
+        String jugador = ServicioEntrada.getScanner().nextLine();
+        System.out.println("Ingrese nombre equipo.");
+        String equipo = ServicioEntrada.getScanner().nextLine();
 
-        return null;
-    }
+        ServicioEquipo servicioEquipo = new ServicioEquipo();
+        Equipo equipoBuscado = servicioEquipo.buscarEquipo(equipo);
+        List<Jugador> jugadorBuscado = new ArrayList<>();
+
+        if(buscarJugador(jugador).size() > 0) {
+            jugadorBuscado.add(buscarJugador(jugador).get(0));
+
+            if (equipoBuscado != null) {
+                if (jugadorBuscado.get(0).getEquipo() == equipoBuscado) {
+                    equipoBuscado.getJugadores().remove(jugadorBuscado.get(0));
+                    equipoBuscado.getJugadores().remove(jugadorBuscado.get(0));
+
+                    System.out.println("El jugador fue eliminado con exito.");
+                } else {
+                    System.out.println("El jugador " + jugador + " no juega en " + equipo);
+                }
+            } else {
+                System.out.println("No existe el equipo " + equipo);
+            }
+        } else{
+                System.out.println("No existe el jugador " + jugador);
+            }
+        }
 }

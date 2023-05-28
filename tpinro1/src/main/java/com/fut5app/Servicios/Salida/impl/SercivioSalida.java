@@ -68,7 +68,8 @@ public class SercivioSalida implements IServicioSalida {
                 writer.write(linea);
                 writer.newLine();
             }
-            System.out.println("Archivo exportado exitosamente para visualizarlo debe detener el programa");
+            System.out.println("Archivo .txt exportado exitosamente.");
+            System.out.println("[Nota] : Para visualizarlo debe detener el programa");
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -102,7 +103,8 @@ public class SercivioSalida implements IServicioSalida {
                 writer.write(linea);
                 writer.newLine();
             }
-            System.out.println("Archivo exportado exitosamente para visualizarlo debe detener el programa");
+            System.out.println("Archivo .csv exportado exitosamente.");
+            System.out.println("[Nota] : Para visualizarlo debe detener el programa");
         }catch (IOException e){
             e.printStackTrace();
         }

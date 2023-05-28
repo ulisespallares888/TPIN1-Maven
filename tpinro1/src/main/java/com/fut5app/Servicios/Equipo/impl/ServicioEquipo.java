@@ -67,7 +67,6 @@ public class ServicioEquipo implements IServicioEquipo {
 
     public void setearTodasLasListas(Equipo equipoNuevo){
         listaEquipos.add(equipoNuevo);
-        listaJugadores.add(equipoNuevo.getJugadores());
         listaEntrenadores.add(equipoNuevo.getEntrenador());
     }
 
@@ -110,7 +109,7 @@ public class ServicioEquipo implements IServicioEquipo {
             System.out.println("Entrenador : " + equipo.getEntrenador().getNombre());
             System.out.println("Jugadoes: ");
             for (Jugador jugador: equipo.getJugadores() ) {
-                System.out.println(jugador.getNombre() +  " - " + jugador.getPosicion().getPosicion());
+                System.out.println(jugador.getNroCamiseta()+ " - " + jugador.getNombre() +  " - " + jugador.getPosicion().getPosicion());
             }
         } else {
             System.out.println("No existe el equipo");
@@ -134,14 +133,13 @@ public class ServicioEquipo implements IServicioEquipo {
     }
     @Override
     public void eliminarEquipo(String nombre) {
-        listaJugadores.remove(buscarEquipo(nombre).getJugadores());
         listaEntrenadores.remove(buscarEquipo(nombre).getEntrenador());
         boolean equipoEiminado = listaEquipos.remove(buscarEquipo(nombre));
 
         if(equipoEiminado){
-            System.out.println("Equipo eliminado");
+            System.out.println("Equipo eliminado exitosamente");
         } else {
-            System.out.println("No se encontro el equipo");
+            System.out.println("No se encontro el equipo ");
         }
     }
     @Override
@@ -154,9 +152,9 @@ public class ServicioEquipo implements IServicioEquipo {
                     .collect(Collectors.toList()));
             System.out.println("Equipo : " + equipo.getNombre());
             System.out.println("Entrenador : " + equipo.getEntrenador().getNombre());
-            System.out.print("Jugadores: ");
+            System.out.println("Jugadores: ");
             for (Jugador jugador: listaOrdenada ) {
-                System.out.print(jugador.getNombre() +  " - " + jugador.getPosicion().getPosicion());
+                System.out.println(jugador.getNroCamiseta()+ " - " + jugador.getNombre() +  " - " + jugador.getPosicion().getPosicion());
             }
         } else {
             System.out.println("No existe el equipo");
@@ -173,9 +171,9 @@ public class ServicioEquipo implements IServicioEquipo {
                     .collect(Collectors.toList()));
             System.out.println("Equipo : " + equipo.getNombre());
             System.out.println("Entrenador : " + equipo.getEntrenador().getNombre());
-            System.out.print("Jugadores: ");
+            System.out.println("Jugadores: ");
             for (Jugador jugador:listaOrdenada ) {
-                System.out.print(jugador.getNombre() +  " - " + jugador.getPosicion().getPosicion());
+                System.out.println(jugador.getNroCamiseta()+ " - " + jugador.getNombre() +  " - " + jugador.getPosicion().getPosicion());
             }
         } else {
             System.out.println("No existe el equipo");
@@ -191,9 +189,9 @@ public class ServicioEquipo implements IServicioEquipo {
             listaOrdenada.sort(Comparator.comparing(Jugador::getPosicion).thenComparing(Jugador::getNroCamiseta));
             System.out.println("Equipo : " + equipo.getNombre());
             System.out.println("Entrenador : " + equipo.getEntrenador().getNombre());
-            System.out.print("Jugadores: ");
+            System.out.println("Jugadores: ");
             for (Jugador jugador: listaOrdenada ) {
-                System.out.print(jugador.getNombre() +  " - " + jugador.getPosicion().getPosicion());
+                System.out.println(jugador.getNroCamiseta()+ " - " + jugador.getNombre() +  " - " + jugador.getPosicion().getPosicion());
             }
         } else {
             System.out.println("No existe el equipo");

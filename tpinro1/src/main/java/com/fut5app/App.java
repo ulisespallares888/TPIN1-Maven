@@ -22,10 +22,6 @@ public class App
     {
         ServicioEntrada.createScanner();
 
-        //ServicioEquipo servicioEquipo = new ServicioEquipo();
-        // System.out.println(servicioEquipo.crearEquipo());
-
-        ServicioMenu.mostrarMenu();
 
 
         Entrenador entrenador = new Entrenador(UUID.randomUUID(),"asdasd","asdasd", 33);
@@ -34,54 +30,14 @@ public class App
 
         List<Jugador> listajug = new ArrayList<>();
         listajug.add(jugador);
-       ServicioJugador servicioJugador = new ServicioJugador();
 
         equipo.setJugadores(jugador);
         listaEntrenadores.add(entrenador);
         listaEquipos.add(equipo);
-        listaJugadores.add(listajug);
-
-        servicioJugador.mostrarJugador("Ulises");
-
-        //SercivioSalida sercivioSalida = new SercivioSalida();
-        //sercivioSalida.exportarEquipoCsv(listaEquipos.get(0));
-
-        //sercivioSalida.exportarCsv(listaEquipos.get(0));
-
-       // servicioEquipo.eliminarEquipo("Boca");
-
-       // servicioEquipo.mostrarEquipoOrdenadoPorNombre("Boca");
-        //servicioEquipo.mostrarEquipoOrdenadoPorPosicionYCamiseta("Boca");
 
 
-        //listaEquipos.forEach(System.out::println);
-        //listaEntrenadores.forEach(System.out::println);
-        //listaJugadores.forEach(System.out::println);
 
-        System.out.println("---------------------------------");
-
-        //servicioEquipo.eliminarEquipo("equipo");
-/*
-        listaEquipos.forEach(System.out::println);
-        listaEntrenadores.forEach(System.out::println);
-        listaJugadores.forEach(lista -> {
-            lista.forEach(elemento -> {
-                // Hacer algo con cada elemento
-                System.out.println(elemento);
-            });
-        });
-*/
-        //ServicioEntradaArchivo servicioEntradaArchivo = new  ServicioEntradaArchivo();
-        //servicioEntradaArchivo.importarJugadores(ServicioEntrada.getScanner().nextLine(),equipo).forEach(System.out::println);
-
-       // SercivioSalida sercivioSalida = new SercivioSalida();
-        //sercivioSalida.exportarEquipoTxt(listaEquipos.get(0));
-
-        //SercivioSalida sercivioSalida = new SercivioSalida();
-       //sercivioSalida.exportarJugadoresTxt( listaEquipos.get(0));
-       // sercivioSalida.exportarJugadoresCsv( listaEquipos.get(0));
-
-
+        ServicioMenu.mostrarMenu();
 
         ServicioEntrada.closeScanner();
 

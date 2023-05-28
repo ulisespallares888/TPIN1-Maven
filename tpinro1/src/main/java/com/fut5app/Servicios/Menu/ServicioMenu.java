@@ -5,25 +5,25 @@ import com.fut5app.Servicios.Equipo.impl.ServicioEquipo;
 import com.fut5app.Servicios.Jugador.impl.ServicioJugador;
 import com.fut5app.Servicios.Salida.impl.SercivioSalida;
 
-import java.util.Scanner;
 
 public class ServicioMenu {
     public static void mostrarMenu(){
 
         String opcion = "";
         while (!opcion.equals("#")){
-
+            System.out.println("----------------------------------------------------------------------------------------------------------");
             System.out.println("1 : Crear Equipos.");
             System.out.println("2 : Buscar jugador.");
             System.out.println("3 : Buscar equipo (Respuesta: equipo, entranador, capitan).");
             System.out.println("4 : Buscar equipo (Respuesta: equipo, entranador, jugadores).");
             System.out.println("5 : Buscar equipo (Respuesta: equipo, entranador, jugadores) ordeando por nombre de jugadores.");
-            System.out.println("6 : Buscar equipo (Respuesta: equipo, entranador, jugadores) ordeando por nuemero de camiseta.");
-            System.out.println("7 : Buscar equipo (Respuesta: equipo, entranador, jugadores) ordeando por nuemero de camiseta y posicion.");
+            System.out.println("6 : Buscar equipo (Respuesta: equipo, entranador, jugadores) ordeando por numero de camiseta.");
+            System.out.println("7 : Buscar equipo (Respuesta: equipo, entranador, jugadores) ordeando por numero de camiseta y posicion.");
             System.out.println("8 : Eliminar equipo.");
             System.out.println("9 : Eliminar un jugador de un equipo.");
             System.out.println("10 : Exportar equipo.");
             System.out.println("Ingrese # para salir ");
+            System.out.println("----------------------------------------------------------------------------------------------------------");
             opcion = ServicioEntrada.getScanner().nextLine();
             tomarOpcion(opcion);
         }
@@ -86,7 +86,8 @@ public class ServicioMenu {
                 break;
             }
             case "9":{
-                System.out.println("falta implmntar");
+                ServicioJugador servicioJugador = new ServicioJugador();
+                servicioJugador.eliminarJugador();
                 break;
             }
             case "10":{
