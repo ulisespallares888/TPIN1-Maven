@@ -4,7 +4,6 @@ import com.fut5app.Dominio.Entrenador;
 import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
 import com.fut5app.Servicios.Entrenador.IServicioEntrenador;
 
-import java.util.Scanner;
 import java.util.UUID;
 
 public class ServicioEntrenador implements IServicioEntrenador {

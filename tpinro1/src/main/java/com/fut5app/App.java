@@ -3,19 +3,14 @@ package com.fut5app;
 import com.fut5app.DatosIniciales.DatosIniciales;
 import com.fut5app.Dominio.*;
 import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
-import com.fut5app.Servicios.Entrada.impl.ServicioEntradaArchivo;
-import com.fut5app.Servicios.Equipo.impl.ServicioEquipo;
-import com.fut5app.Servicios.Jugador.impl.ServicioJugador;
 import com.fut5app.Servicios.Menu.ServicioMenu;
-import com.fut5app.Servicios.Salida.impl.SercivioSalida;
 
 import java.time.LocalDate;
 import java.util.*;
 
 public class App
 {
-    public static List<Entrenador> listaEntrenadores = DatosIniciales.listaEntrenadores;
-    public static List<Equipo> listaEquipos = DatosIniciales.listaEquipos;
+    public static List<Equipo> listaEquipos = DatosIniciales.devolverEquipos();
 
     public static void main( String[] args )
     {
@@ -31,7 +26,6 @@ public class App
         listajug.add(jugador);
 
         equipo.setJugadores(jugador);
-        listaEntrenadores.add(entrenador);
         listaEquipos.add(equipo);
 
 

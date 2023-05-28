@@ -49,7 +49,7 @@ public class SercivioSalida implements IServicioSalida {
     @Override
     public void exportarJugadoresTxt(Equipo equipo){
 
-        String nombreArchivo = "Jugadores.txt";
+        String nombreArchivo = equipo.getNombre() + ".txt";
         String ruta = "src\\main\\java\\com\\fut5app\\Resources\\ArchivoSalida\\" + nombreArchivo;
         ruta += " " + UUID.randomUUID();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))){
@@ -84,7 +84,7 @@ public class SercivioSalida implements IServicioSalida {
     @Override
     public void exportarJugadoresCsv(Equipo equipo){
 
-        String nombreArchivo = "Jugadores.csv";
+        String nombreArchivo = equipo.getNombre() + ".csv";
         String ruta = "src\\main\\java\\com\\fut5app\\Resources\\ArchivoSalida\\" + nombreArchivo;
         ruta += " " + UUID.randomUUID();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))){
