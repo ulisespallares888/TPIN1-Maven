@@ -36,7 +36,7 @@ public class ServicioMenu {
                 ServicioEquipo servicioEquipo = new ServicioEquipo();
                 String opcionCreacionEquipos = "";
                 while(!opcionCreacionEquipos.equals("#")){
-                    System.out.println(servicioEquipo.crearEquipo());
+                    servicioEquipo.crearEquipo();
                     System.out.println("¿Desea seguir con la carga de equipos? ");
                     System.out.println("1 : Si - 2 : No ");
                     opcionCreacionEquipos = (ServicioEntrada.getScanner().nextLine().equals("1")) ? "" : "#";

@@ -31,28 +31,63 @@ public class ServicioJugador implements IServicioJugador {
 
         ServicioPosicion.mostrarPosiciones(ServicioPosicion.formacionEligida);
 
-        jugador.setPosicion((Posiciones) ServicioPosicion.crearPosicion(ServicioEntrada.getScanner().nextInt()));
+        jugador.setPosicion(ServicioPosicion.crearPosicion(ServicioEntrada.getScanner().nextInt()));
         System.out.println("Ingrese cantidad de goles del jugador");
         jugador.setCantGoles(ServicioEntrada.getScanner().nextInt());
         System.out.println("Ingrese cantidad de partidos del jugador");
         jugador.setCanttPartidos(ServicioEntrada.getScanner().nextInt());
-        System.out.println("Ingrese el jugador es capitan. 1: Es capitan 2: No es capitan");
-        jugador.setCapitan(opcionesCapitan(ServicioEntrada.getScanner().nextInt()));
+        ServicioEntrada.getScanner().nextLine();
+        controlCapitan(equipo,jugador);
+
         System.out.println("Ingrese numero de camiseta del jugador");
-        jugador.setNroCamiseta(ServicioEntrada.getScanner().nextInt());
+        jugador.setNroCamiseta(controlCamisetas(equipo,ServicioEntrada.getScanner().nextInt()));
         ServicioEntrada.getScanner().nextLine();
         System.out.println("--------------------------------");
 
         return jugador;
     }
 
-    public boolean opcionesCapitan(int opcion){
-        if (opcion==1){
-            return true;
-        } else if (opcion==2) {
-            return  false;
+    public int controlCamisetas(Equipo equipo, int numeroCamiseta){
+
+        boolean mismaCamiseta = false;
+        boolean seguir = true;
+        while (seguir){
+            for (Jugador jugador: equipo.getJugadores()){
+                if (numeroCamiseta == jugador.getNroCamiseta()){
+                    mismaCamiseta = true;
+                }
+            }
+            if (mismaCamiseta){
+                System.out.println("El numero de camiseta ingreado ya esta ocupado elija otro.");
+                numeroCamiseta = ServicioEntrada.getScanner().nextInt();
+                mismaCamiseta = false;
+            }else {
+                seguir = false;
+                return  numeroCamiseta;
+            }
         }
-        return false;
+        return  numeroCamiseta;
+    }
+
+    public void controlCapitan(Equipo equipo, Jugador jugador){
+
+        boolean isCapitan = false;
+
+        for (Jugador jugador1: equipo.getJugadores()){
+            if (jugador1.isCapitan()){
+                isCapitan = true;
+            }
+        }
+        if (!isCapitan){
+            System.out.println("Ingrese el jugador es capitan. 1: Es capitan 2: No es capitan");
+            String opcion= ServicioEntrada.getScanner().nextLine();
+            if (opcion.equals("1")){
+                jugador.setCapitan(true);
+            } else if (opcion.equals("2")) {
+                jugador.setCapitan(false);
+            }
+        }
+
     }
 
 

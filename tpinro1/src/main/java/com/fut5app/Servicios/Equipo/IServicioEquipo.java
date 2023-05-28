@@ -3,7 +3,7 @@ package com.fut5app.Servicios.Equipo;
 import com.fut5app.Dominio.Equipo;
 
 public interface IServicioEquipo {
-    Equipo crearEquipo();
+    void crearEquipo();
 
     Equipo buscarEquipo(String nombre);
     void eliminarEquipo(String nombre);

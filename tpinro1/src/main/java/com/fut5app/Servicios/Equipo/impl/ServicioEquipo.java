@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 import static com.fut5app.App.listaEquipos;
 public class ServicioEquipo implements IServicioEquipo {
     @Override
-    public Equipo crearEquipo() {
+    public void crearEquipo() {
         System.out.println("****** Carga de equipo ****** ");
         Equipo equipoNuevo = new Equipo();
         equipoNuevo.setId(UUID.randomUUID());
@@ -34,7 +34,7 @@ public class ServicioEquipo implements IServicioEquipo {
         System.out.println("****** Carga de entrenador ****** ");
         cargarEntrenador(equipoNuevo);
         setearTodasLasListas(equipoNuevo);
-       return equipoNuevo;
+        mostrarEquipo(equipoNuevo.getNombre());
     }
 
 

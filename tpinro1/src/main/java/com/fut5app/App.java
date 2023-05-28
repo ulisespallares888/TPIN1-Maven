@@ -16,20 +16,6 @@ public class App
     {
         ServicioEntrada.createScanner();
 
-
-
-        Entrenador entrenador = new Entrenador(UUID.randomUUID(),"asdasd","asdasd", 33);
-        Equipo equipo = new Equipo(UUID.randomUUID(), "equipo", LocalDate.now(),entrenador);
-        Jugador jugador = new Jugador(UUID.randomUUID(),"Ulises","pallares",1.66, Posiciones.ARQUERO, 22,10, true, 9,equipo);
-
-        List<Jugador> listajug = new ArrayList<>();
-        listajug.add(jugador);
-
-        equipo.setJugadores(jugador);
-        listaEquipos.add(equipo);
-
-
-
         ServicioMenu.mostrarMenu();
 
         ServicioEntrada.closeScanner();
