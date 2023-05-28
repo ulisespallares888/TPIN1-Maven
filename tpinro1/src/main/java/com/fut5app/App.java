@@ -14,7 +14,6 @@ import java.util.*;
 
 public class App
 {
-    public static List<List<Jugador>> listaJugadores = DatosIniciales.devolverJugadores();
     public static List<Entrenador> listaEntrenadores = DatosIniciales.listaEntrenadores;
     public static List<Equipo> listaEquipos = DatosIniciales.listaEquipos;
 
