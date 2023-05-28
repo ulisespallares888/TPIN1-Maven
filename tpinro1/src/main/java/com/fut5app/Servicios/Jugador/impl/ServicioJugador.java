@@ -71,6 +71,7 @@ public class ServicioJugador implements IServicioJugador {
                 }
             }
         }
+
         return listJug;
     }
     @Override
@@ -86,7 +87,7 @@ public class ServicioJugador implements IServicioJugador {
                 System.out.println("---------------");
             }
         } else {
-            System.out.println("No exite el jugador ");
+            System.out.println("No exite el jugador !!!");
         }
 
     }

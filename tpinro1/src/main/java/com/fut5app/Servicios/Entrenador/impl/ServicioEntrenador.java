@@ -19,7 +19,7 @@ public class ServicioEntrenador implements IServicioEntrenador {
         entrenador.setApellido(ServicioEntrada.getScanner().next());
         System.out.println("Ingrese la edad del entrenador");
         entrenador.setEdad(ServicioEntrada.getScanner().nextInt());
-
+        ServicioEntrada.getScanner().nextLine();
         return entrenador;
     }
 }

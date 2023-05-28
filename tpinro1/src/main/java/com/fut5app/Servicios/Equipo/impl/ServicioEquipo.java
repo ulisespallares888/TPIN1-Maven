@@ -108,13 +108,14 @@ public class ServicioEquipo implements IServicioEquipo {
         if(equipo.getNombre() != null){
             System.out.println("Equipo : " + equipo.getNombre());
             System.out.println("Entrenador : " + equipo.getEntrenador().getNombre());
-            System.out.print("Jugadoes: ");
+            System.out.println("Jugadoes: ");
             for (Jugador jugador: equipo.getJugadores() ) {
-                System.out.print(jugador.getNombre()+ " ");
+                System.out.println(jugador.getNombre() +  " - " + jugador.getPosicion().getPosicion());
             }
         } else {
             System.out.println("No existe el equipo");
         }
+        System.out.println(" ");
     }
 
     @Override
@@ -155,7 +156,7 @@ public class ServicioEquipo implements IServicioEquipo {
             System.out.println("Entrenador : " + equipo.getEntrenador().getNombre());
             System.out.print("Jugadores: ");
             for (Jugador jugador: listaOrdenada ) {
-                System.out.print(jugador.getNombre()+ " ");
+                System.out.print(jugador.getNombre() +  " - " + jugador.getPosicion().getPosicion());
             }
         } else {
             System.out.println("No existe el equipo");
@@ -174,7 +175,7 @@ public class ServicioEquipo implements IServicioEquipo {
             System.out.println("Entrenador : " + equipo.getEntrenador().getNombre());
             System.out.print("Jugadores: ");
             for (Jugador jugador:listaOrdenada ) {
-                System.out.print(jugador.getNombre()+ " ");
+                System.out.print(jugador.getNombre() +  " - " + jugador.getPosicion().getPosicion());
             }
         } else {
             System.out.println("No existe el equipo");
@@ -192,7 +193,7 @@ public class ServicioEquipo implements IServicioEquipo {
             System.out.println("Entrenador : " + equipo.getEntrenador().getNombre());
             System.out.print("Jugadores: ");
             for (Jugador jugador: listaOrdenada ) {
-                System.out.print(jugador.getNombre()+ " ");
+                System.out.print(jugador.getNombre() +  " - " + jugador.getPosicion().getPosicion());
             }
         } else {
             System.out.println("No existe el equipo");

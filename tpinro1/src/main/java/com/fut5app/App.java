@@ -25,7 +25,7 @@ public class App
         //ServicioEquipo servicioEquipo = new ServicioEquipo();
         // System.out.println(servicioEquipo.crearEquipo());
 
-        //ServicioMenu.mostrarMenu();
+        ServicioMenu.mostrarMenu();
 
 
         Entrenador entrenador = new Entrenador(UUID.randomUUID(),"asdasd","asdasd", 33);
@@ -77,8 +77,10 @@ public class App
        // SercivioSalida sercivioSalida = new SercivioSalida();
         //sercivioSalida.exportarEquipoTxt(listaEquipos.get(0));
 
-        SercivioSalida sercivioSalida = new SercivioSalida();
-        sercivioSalida.exportarJugadoresTxt( listaEquipos.get(0));
+        //SercivioSalida sercivioSalida = new SercivioSalida();
+       //sercivioSalida.exportarJugadoresTxt( listaEquipos.get(0));
+       // sercivioSalida.exportarJugadoresCsv( listaEquipos.get(0));
+
 
 
         ServicioEntrada.closeScanner();
