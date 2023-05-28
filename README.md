@@ -10,5 +10,7 @@ nombre, apellido y edad.
 
 Diagrama de clases 
 
+https://drive.google.com/file/d/1tfWyXHBLRZZCEWrAHRjZneRyJpoHQ_5y/view?usp=sharing
+
 
 
