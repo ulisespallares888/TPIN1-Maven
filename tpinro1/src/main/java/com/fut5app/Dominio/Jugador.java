@@ -27,6 +27,7 @@ public class Jugador extends Persona {
         this.nroCamiseta = nroCamiseta;
         this.equipo = equipo;
     }
+
     public Jugador(UUID id, String nombre, String apellido, double altura, Posiciones posicion, int cantGoles, int canttPartidos, boolean capitan, int nroCamiseta) {
         super.setNombre(nombre);
         super.setApellido(apellido);
@@ -39,7 +40,6 @@ public class Jugador extends Persona {
         this.nroCamiseta = nroCamiseta;
 
     }
-
 
     public UUID getId() {
         return id;
@@ -111,7 +111,7 @@ public class Jugador extends Persona {
                 "id=" + id +
                 super.toString() +
                 ", altura=" + altura +
-                ", posicion=" + posicion +
+                ", posicion=" + posicion.getPosicion() +
                 ", cantGoles=" + cantGoles +
                 ", canttPartidos=" + canttPartidos +
                 ", capitan=" + capitan +

@@ -6,6 +6,7 @@ import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
 import com.fut5app.Servicios.Entrada.impl.ServicioEntradaArchivo;
 import com.fut5app.Servicios.Equipo.impl.ServicioEquipo;
 import com.fut5app.Servicios.Jugador.impl.ServicioJugador;
+import com.fut5app.Servicios.Menu.ServicioMenu;
 import com.fut5app.Servicios.Salida.impl.SercivioSalida;
 
 import java.time.LocalDate;
@@ -21,9 +22,10 @@ public class App
     {
         ServicioEntrada.createScanner();
 
-        ServicioEquipo servicioEquipo = new ServicioEquipo();
-         System.out.println(servicioEquipo.crearEquipo());
+        //ServicioEquipo servicioEquipo = new ServicioEquipo();
+        // System.out.println(servicioEquipo.crearEquipo());
 
+        //ServicioMenu.mostrarMenu();
 
 
         Entrenador entrenador = new Entrenador(UUID.randomUUID(),"asdasd","asdasd", 33);
@@ -70,12 +72,13 @@ public class App
         });
 */
         //ServicioEntradaArchivo servicioEntradaArchivo = new  ServicioEntradaArchivo();
-        //servicioEntradaArchivo.importarJugadores(ServicioEntrada.getScanner().nextLine(),equipo);
+        //servicioEntradaArchivo.importarJugadores(ServicioEntrada.getScanner().nextLine(),equipo).forEach(System.out::println);
 
        // SercivioSalida sercivioSalida = new SercivioSalida();
         //sercivioSalida.exportarEquipoTxt(listaEquipos.get(0));
 
-
+        SercivioSalida sercivioSalida = new SercivioSalida();
+        sercivioSalida.exportarJugadoresTxt( listaEquipos.get(0));
 
 
         ServicioEntrada.closeScanner();

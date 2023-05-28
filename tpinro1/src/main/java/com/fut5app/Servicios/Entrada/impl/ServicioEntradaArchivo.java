@@ -5,8 +5,12 @@ import com.fut5app.Dominio.Jugador;
 import com.fut5app.Dominio.Posiciones;
 import com.fut5app.Servicios.Entrada.IServicioEntrada;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,20 +20,21 @@ import java.util.UUID;
 public class ServicioEntradaArchivo implements IServicioEntrada {
 
 
-    public List<Jugador> importarJugadores(String archivoRuta, Equipo equipo) {
-        List<Jugador> listaJug = new ArrayList<>();
+    public List<Jugador> importarJugadores(String archivoRuta, Equipo equipo){
+        List<Jugador> listJug = new ArrayList<>();
         List<String> listasplited = new ArrayList<>();
-        try {
-            File archivo = new File(archivoRuta);
-            ServicioEntrada.scanner = new Scanner(archivo);
 
-            while (ServicioEntrada.getScanner().hasNextLine()) {
+        try{
+            List<String> lineas = FileUtils.readLines(new File(archivoRuta), StandardCharsets.UTF_8);
+
+            for (String linea: lineas) {
                 Jugador jugador = new Jugador();
-                String linea = ServicioEntrada.getScanner().nextLine();
                 String[] datosArray = linea.split(",");
+
                 for (String dato : datosArray) {
                     listasplited.add(dato);
                 }
+
                 jugador.setId(UUID.randomUUID());
                 jugador.setNombre(listasplited.get(0));
                 jugador.setApellido(listasplited.get(1));
@@ -40,18 +45,23 @@ public class ServicioEntradaArchivo implements IServicioEntrada {
                 jugador.setCapitan(Boolean.parseBoolean(listasplited.get(6)));
                 jugador.setNroCamiseta(Integer.parseInt(listasplited.get(7)));
                 jugador.setEquipo(equipo);
-                listaJug.add(jugador);
+                listJug.add(jugador);
 
                 listasplited.clear();
+
             }
 
-            ServicioEntrada.closeScanner();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
 
-            return listaJug;
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+        }catch (NullPointerException n){
+            System.out.println(n.getMessage());
+            throw new RuntimeException(n);
         }
-        return listaJug;
+
+        return listJug;
+
     }
+
 }
 

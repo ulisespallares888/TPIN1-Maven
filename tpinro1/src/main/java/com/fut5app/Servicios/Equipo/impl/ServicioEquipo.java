@@ -1,6 +1,5 @@
 package com.fut5app.Servicios.Equipo.impl;
 
-
 import com.fut5app.Dominio.Equipo;
 import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
 import com.fut5app.Servicios.Entrada.impl.ServicioEntradaArchivo;
@@ -9,7 +8,6 @@ import com.fut5app.Servicios.Equipo.IServicioEquipo;
 import com.fut5app.Servicios.Jugador.impl.ServicioJugador;
 import com.fut5app.Dominio.Jugador;
 import com.fut5app.Servicios.Posicion.impl.ServicioPosicion;
-
 
 import java.time.LocalDate;
 import java.util.*;
@@ -29,24 +27,7 @@ public class ServicioEquipo implements IServicioEquipo {
         System.out.println("Ingrese fecha de creacion del equipo. Formato(DD-MM-AAAA)");
         equipoNuevo.setFechaDeCreacion(foramtearFecha(ServicioEntrada.getScanner().nextLine()));
 
-        System.out.println("Tipo de carga");
-        System.out.println("1 : Maual 2: Por importacion");
-        String opcion = ServicioEntrada.getScanner().nextLine();
-
-        if( opcion.equals("1")){
-            ServicioPosicion.mostrarFormaciones();
-            ServicioPosicion.elegirFomacion(ServicioEntrada.getScanner().nextInt());
-            System.out.println("****** Carga de jugadores ****** ");
-            ServicioEntrada.getScanner().nextLine();
-            cargarJugadores(equipoNuevo);
-        } else{
-            System.out.println("El formato del archvo debe ser nombre, apellido, ");
-            ServicioEntradaArchivo servicioEntradaArchivo = new ServicioEntradaArchivo();
-            equipoNuevo.setJugadores(servicioEntradaArchivo.importarJugadores(ServicioEntrada.getScanner().nextLine(),equipoNuevo));
-            equipoNuevo.getJugadores().forEach(System.out::println);
-            ServicioEntrada.createScanner();
-        }
-
+        establecerTipoDeCarga(equipoNuevo);
 
         System.out.println("****** Carga de entrenador ****** ");
         cargarEntrenador(equipoNuevo);
@@ -55,6 +36,26 @@ public class ServicioEquipo implements IServicioEquipo {
     }
 
 
+    public void establecerTipoDeCarga(Equipo equipoNuevo){
+        System.out.println("Tipo de carga");
+        System.out.println("1 : Maualmente ");
+        System.out.println("2 : Por importacion");
+        String opcion = ServicioEntrada.getScanner().nextLine();
+        if( opcion.equals("1")){
+            ServicioPosicion.mostrarFormaciones();
+            ServicioPosicion.elegirFomacion(ServicioEntrada.getScanner().nextInt());
+            System.out.println("****** Carga de jugadores ****** ");
+            ServicioEntrada.getScanner().nextLine();
+            cargarJugadores(equipoNuevo);
+        } else{
+            System.out.println("[Atencion] : El formato del archvo debe ser nombre, apellido, altura, posicion," +
+                    " cantidad de goles, cantidad de partidos, si es capitan(true/false) y numero de camiseta ");
+            System.out.println("Ingrese la ruta del archivo");
+            ServicioEntradaArchivo servicioEntradaArchivo = new ServicioEntradaArchivo();
+            equipoNuevo.setJugadores(servicioEntradaArchivo.importarJugadores(ServicioEntrada.getScanner().nextLine(),equipoNuevo));
+
+        }
+    }
 
     public LocalDate foramtearFecha(String fecha){
 

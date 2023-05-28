@@ -79,7 +79,7 @@ public class Equipo {
                 "id=" + id +
                 ", nombre='" + this.nombre + '\'' +
                 ", fechaDeCreacion=" + fechaDeCreacion +
-                ", entrenador=" + entrenador +", jugadores=" + jugadores;
+                ", entrenador=" + entrenador.getNombre() +", jugadores=" + jugadores;
         return salida;
     }
 }
