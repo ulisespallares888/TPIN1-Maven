@@ -20,7 +20,7 @@ public class DatosIniciales {
         return listaEquipos;
     }
 
-    public static  void cargarEquipo(){
+    private static  void cargarEquipo(){
         cargarEntrenadores();
         listaEquipos.add(new Equipo(UUID.randomUUID(), "Boca", LocalDate.now(),listaEntrenadores.get(0)));
         listaEquipos.add(new Equipo(UUID.randomUUID(), "River", LocalDate.now(), listaEntrenadores.get(1)));
@@ -28,19 +28,15 @@ public class DatosIniciales {
     }
 
 
-    public static void cargarEntrenadores(){
+    private static void cargarEntrenadores(){
         listaEntrenadores.add(new Entrenador(UUID.randomUUID(),"Juan","Soto", 33));
         listaEntrenadores.add(new Entrenador(UUID.randomUUID(),"Jose","Morales", 44));
     }
 
-    public static  List<List<Jugador>> devolverJugadores(){
-        cargarJugadores();
-        return listaJugadores;
-    }
 
-    public static void cargarJugadores(){
+
+    private static void cargarJugadores(){
         cargarEntrenadores();
-       // cargarEquipo();
         List<Jugador> listaJugadoresE1 = new ArrayList<>();
         List<Jugador> listaJugadoresE2 = new ArrayList<>();
 
@@ -61,13 +57,13 @@ public class DatosIniciales {
 
     }
 
-    public static void setearEquiposConJugadores(List<Jugador> listaJugadoresE1,List<Jugador> listaJugadoresE2){
+    private static void setearEquiposConJugadores(List<Jugador> listaJugadoresE1,List<Jugador> listaJugadoresE2){
 
         listaEquipos.get(0).setJugadores(listaJugadoresE1);
         listaEquipos.get(1).setJugadores(listaJugadoresE2);
     }
 
-    public static void cargarListaJugadores(List<Jugador> listaJugadoresE1,List<Jugador> listaJugadoresE2){
+    private static void cargarListaJugadores(List<Jugador> listaJugadoresE1,List<Jugador> listaJugadoresE2){
         listaJugadores.add(listaJugadoresE1);
         listaJugadores.add(listaJugadoresE2);
     }

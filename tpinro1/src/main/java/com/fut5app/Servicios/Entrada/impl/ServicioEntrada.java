@@ -1,7 +1,10 @@
 package com.fut5app.Servicios.Entrada.impl;
 
+import com.fut5app.Dominio.Equipo;
+import com.fut5app.Dominio.Jugador;
 import com.fut5app.Servicios.Entrada.IServicioEntrada;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ServicioEntrada implements IServicioEntrada{
@@ -20,13 +23,12 @@ public class ServicioEntrada implements IServicioEntrada{
         return scanner;
     }
 
-
-
     public static void closeScanner(){
         if(scanner != null){
             scanner.close();
         }
     }
+
 
 
 }

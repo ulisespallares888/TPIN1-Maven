@@ -90,8 +90,6 @@ public class ServicioJugador implements IServicioJugador {
 
     }
 
-
-
     private List<Jugador>  buscarJugador(String nombreJugador) {
         List<Jugador> listJug = new ArrayList<>();
         for (Equipo equipos: listaEquipos ) {

@@ -11,9 +11,6 @@ public interface IServicioEntrada {
     static Scanner getScanner(){
         return null;
     };
-
-
     static void closeScanner(){};
-
 
 }
