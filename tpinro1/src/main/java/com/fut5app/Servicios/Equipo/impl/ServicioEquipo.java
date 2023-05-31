@@ -164,15 +164,17 @@ public class ServicioEquipo implements IServicioEquipo {
         for (Jugador jugador: listaOrdenada ) {
             System.out.println(jugador.getNroCamiseta()+ " - " + jugador.getNombre() +  " - " + jugador.getPosicion().getPosicion());
         }
-        System.out.println("¿Desea exportar jugadores? 1 : Si - 2 : No" );
-        if(ServicioEntrada.getScanner().nextLine().equals("1")){
+        opcionDeExportar(equipo,listaOrdenada);
+    }
+
+    private void opcionDeExportar(Equipo equipo, List<Jugador> listaOrdenada) {
+        System.out.println("¿Desea exportar jugadores? 1 : Si - 2 : No");
+        if (ServicioEntrada.getScanner().nextLine().equals("1")) {
             SercivioSalida servicioSalida = new SercivioSalida();
             equipo.getJugadores().clear();
             equipo.setJugadores(listaOrdenada);
             servicioSalida.exportarAchivo(equipo);
-
         }
-
     }
 
     @Override

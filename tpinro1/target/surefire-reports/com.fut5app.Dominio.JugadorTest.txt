@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.fut5app.AppTest
+Test set: com.fut5app.Dominio.JugadorTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s - in com.fut5app.AppTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in com.fut5app.Dominio.JugadorTest
