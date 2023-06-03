@@ -2,20 +2,11 @@ package com.fut5app.Servicios.Salida.impl;
 
 import com.fut5app.Dominio.Equipo;
 import com.fut5app.Dominio.Jugador;
-import com.fut5app.Dominio.Posiciones;
 import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
 import com.fut5app.Servicios.Salida.IServicioSalida;
-import org.apache.commons.io.FileUtils;
-
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.Clock;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class SercivioSalida implements IServicioSalida {
@@ -29,16 +20,16 @@ public class SercivioSalida implements IServicioSalida {
 
         switch (ServicioEntrada.getScanner().nextLine()){
             case "1":{
-                exportarJugadoresTxt(equipo);
+                exportarJugadores(equipo,"txt");
                 break;
             }
             case "2":{
-                exportarJugadoresCsv(equipo);
+                exportarJugadores(equipo,"csv");
                 break;
             }
             case "3":{
-                exportarJugadoresTxt(equipo);
-                exportarJugadoresCsv(equipo);
+                exportarJugadores(equipo,"txt");
+                exportarJugadores(equipo,"csv");
                 break;
             }
         }
@@ -47,9 +38,14 @@ public class SercivioSalida implements IServicioSalida {
 
 
 
-    private void exportarJugadoresTxt(Equipo equipo){
+    private void exportarJugadores(Equipo equipo, String modo){
+        String nombreArchivo = "";
+        if (modo.equals("txt")) {
+             nombreArchivo = equipo.getNombre() + ".txt";
+        } else if (modo.equals("csv")) {
+             nombreArchivo = equipo.getNombre() + ".csv";
+        }
 
-        String nombreArchivo = equipo.getNombre() + ".txt";
         String ruta = "src\\main\\java\\com\\fut5app\\Resources\\ArchivoSalida\\" + nombreArchivo;
         ruta += " " + UUID.randomUUID();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))){
@@ -68,46 +64,12 @@ public class SercivioSalida implements IServicioSalida {
                 writer.write(linea);
                 writer.newLine();
             }
-            System.out.println("Archivo .txt exportado exitosamente.");
+            System.out.println("Archivo " + modo + " exportado exitosamente.");
             System.out.println("[Nota] : Para visualizarlo debe detener el programa");
         }catch (IOException e){
             e.printStackTrace();
         }
 
-
-
-    }
-
-
-
-
-
-    public void exportarJugadoresCsv(Equipo equipo){
-
-        String nombreArchivo = equipo.getNombre() + ".csv";
-        String ruta = "src\\main\\java\\com\\fut5app\\Resources\\ArchivoSalida\\" + nombreArchivo;
-        ruta += " " + UUID.randomUUID();
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))){
-
-            for (Jugador jugador: equipo.getJugadores()) {
-
-                String linea = jugador.getNombre() + "," +
-                        jugador.getApellido() + "," +
-                        jugador.getAltura() + "," +
-                        jugador.getPosicion()+ "," +
-                        jugador.getCantGoles()  + "," +
-                        jugador.getCanttPartidos() + "," +
-                        jugador.isCapitan()  + "," +
-                        jugador.getNroCamiseta();
-
-                writer.write(linea);
-                writer.newLine();
-            }
-            System.out.println("Archivo .csv exportado exitosamente.");
-            System.out.println("[Nota] : Para visualizarlo debe detener el programa");
-        }catch (IOException e){
-            e.printStackTrace();
-        }
     }
 
 }

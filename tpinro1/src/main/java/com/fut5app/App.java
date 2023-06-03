@@ -3,10 +3,10 @@ package com.fut5app;
 import com.fut5app.DatosIniciales.DatosIniciales;
 import com.fut5app.Dominio.*;
 import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
-import com.fut5app.Servicios.Menu.ServicioMenu;
+import com.fut5app.Servicios.Menu.IMenu;
+import com.fut5app.Servicios.Menu.impl.ServicioMenu;
 
-import java.time.LocalDate;
-import java.util.*;
+import java.util.List;
 
 public class App
 {
@@ -16,7 +16,8 @@ public class App
     {
         ServicioEntrada.createScanner();
 
-        ServicioMenu.mostrarMenu();
+        IMenu IServicioMenu= new ServicioMenu();
+        IServicioMenu.mostrarMenu();
 
         ServicioEntrada.closeScanner();
 

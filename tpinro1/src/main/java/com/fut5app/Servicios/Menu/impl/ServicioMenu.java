@@ -1,13 +1,15 @@
-package com.fut5app.Servicios.Menu;
+package com.fut5app.Servicios.Menu.impl;
 
 import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
 import com.fut5app.Servicios.Equipo.impl.ServicioEquipo;
 import com.fut5app.Servicios.Jugador.impl.ServicioJugador;
+import com.fut5app.Servicios.Menu.IMenu;
 import com.fut5app.Servicios.Salida.impl.SercivioSalida;
 
 
-public class ServicioMenu {
-    public static void mostrarMenu(){
+public class ServicioMenu implements IMenu {
+    @Override
+    public void mostrarMenu(){
 
         String opcion = "";
         while (!opcion.equals("#")){
@@ -30,7 +32,7 @@ public class ServicioMenu {
 
     }
 
-    private static void tomarOpcion(String opcion) {
+    private void tomarOpcion(String opcion) {
         switch (opcion){
             case "1":{
                 ServicioEquipo servicioEquipo = new ServicioEquipo();
