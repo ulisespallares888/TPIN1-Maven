@@ -16,7 +16,7 @@ public class App
     {
         ServicioEntrada.createScanner();
 
-        IMenu IServicioMenu= new ServicioMenu();
+        IMenu IServicioMenu = new ServicioMenu();
         IServicioMenu.mostrarMenu();
 
         ServicioEntrada.closeScanner();

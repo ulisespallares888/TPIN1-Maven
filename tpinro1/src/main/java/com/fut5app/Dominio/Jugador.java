@@ -28,18 +28,6 @@ public class Jugador extends Persona {
         this.equipo = equipo;
     }
 
-    public Jugador(UUID id, String nombre, String apellido, double altura, Posiciones posicion, int cantGoles, int canttPartidos, boolean capitan, int nroCamiseta) {
-        super.setNombre(nombre);
-        super.setApellido(apellido);
-        this.id = id;
-        this.altura = altura;
-        this.posicion = posicion;
-        this.cantGoles = cantGoles;
-        this.canttPartidos = canttPartidos;
-        this.capitan = capitan;
-        this.nroCamiseta = nroCamiseta;
-
-    }
 
     public UUID getId() {
         return id;

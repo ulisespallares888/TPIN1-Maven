@@ -12,18 +12,6 @@ public class Equipo {
 
     public Equipo() {}
 
-    public Equipo(String nombre) {
-        this.id = UUID.randomUUID();
-        this.nombre = nombre;
-        this.fechaDeCreacion = LocalDate.now();
-    }
-    public Equipo(UUID id, String nombre, LocalDate fechaDeCreacion, List<Jugador> jugadores, Entrenador entrenador) {
-        this.id = id;
-        this.nombre = nombre;
-        this.fechaDeCreacion = fechaDeCreacion;
-        this.jugadores.add(jugadores);
-        this.entrenador = entrenador;
-    }
     public Equipo(UUID id, String nombre, LocalDate fechaDeCreacion,  Entrenador entrenador) {
         this.id = id;
         this.nombre = nombre;
