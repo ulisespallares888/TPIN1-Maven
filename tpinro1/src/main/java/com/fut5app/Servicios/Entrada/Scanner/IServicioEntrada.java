@@ -1,4 +1,4 @@
-package com.fut5app.Servicios.Entrada;
+package com.fut5app.Servicios.Entrada.Scanner;
 import java.util.Scanner;
 
 public interface IServicioEntrada {

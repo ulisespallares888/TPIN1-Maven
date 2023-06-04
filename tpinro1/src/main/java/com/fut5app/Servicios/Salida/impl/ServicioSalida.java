@@ -2,7 +2,7 @@ package com.fut5app.Servicios.Salida.impl;
 
 import com.fut5app.Dominio.Equipo;
 import com.fut5app.Dominio.Jugador;
-import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
+import com.fut5app.Servicios.Entrada.Scanner.impl.ServicioEntrada;
 import com.fut5app.Servicios.Salida.IServicioSalida;
 import java.io.BufferedWriter;
 import java.io.FileWriter;

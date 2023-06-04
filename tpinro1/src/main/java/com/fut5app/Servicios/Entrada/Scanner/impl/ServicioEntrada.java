@@ -1,9 +1,8 @@
-package com.fut5app.Servicios.Entrada.impl;
+package com.fut5app.Servicios.Entrada.Scanner.impl;
 
 
-import com.fut5app.Servicios.Entrada.IServicioEntrada;
+import com.fut5app.Servicios.Entrada.Scanner.IServicioEntrada;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class ServicioEntrada implements IServicioEntrada{

@@ -1,10 +1,10 @@
-package com.fut5app.Servicios.Entrada.impl;
+package com.fut5app.Servicios.Entrada.Archivo.impl;
 
 import com.fut5app.Dominio.Equipo;
 import com.fut5app.Dominio.Jugador;
 import com.fut5app.Dominio.Posiciones;
 
-import com.fut5app.Servicios.Entrada.IServicioEntradaArchivo;
+import com.fut5app.Servicios.Entrada.Archivo.IServicioEntradaArchivo;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;

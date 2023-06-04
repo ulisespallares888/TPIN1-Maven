@@ -1,9 +1,9 @@
 package com.fut5app.Servicios.Equipo.impl;
 
 import com.fut5app.Dominio.Equipo;
-import com.fut5app.Servicios.Entrada.IServicioEntradaArchivo;
-import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
-import com.fut5app.Servicios.Entrada.impl.ServicioEntradaArchivo;
+import com.fut5app.Servicios.Entrada.Archivo.IServicioEntradaArchivo;
+import com.fut5app.Servicios.Entrada.Scanner.impl.ServicioEntrada;
+import com.fut5app.Servicios.Entrada.Archivo.impl.ServicioEntradaArchivo;
 import com.fut5app.Servicios.Entrenador.IServicioEntrenador;
 import com.fut5app.Servicios.Entrenador.impl.ServicioEntrenador;
 import com.fut5app.Servicios.Equipo.IServicioEquipo;
@@ -51,9 +51,6 @@ public class ServicioEquipo implements IServicioEquipo {
         } else {
             System.out.println("No hay equipos cargados");
         }
-
-
-
     }
 
     private void controlDeNombre(Equipo equipoNuevo){
@@ -243,7 +240,6 @@ public class ServicioEquipo implements IServicioEquipo {
             System.out.println("No existe el equipo");
         }
     }
-
 
 
 }

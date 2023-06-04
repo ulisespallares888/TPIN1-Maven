@@ -2,7 +2,7 @@ package com.fut5app.Servicios.Jugador.impl;
 
 import com.fut5app.Dominio.Equipo;
 import com.fut5app.Dominio.Jugador;
-import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
+import com.fut5app.Servicios.Entrada.Scanner.impl.ServicioEntrada;
 import com.fut5app.Servicios.Equipo.impl.ServicioEquipo;
 import com.fut5app.Servicios.Jugador.IServicioJugador;
 import com.fut5app.Servicios.Posicion.impl.ServicioPosicion;

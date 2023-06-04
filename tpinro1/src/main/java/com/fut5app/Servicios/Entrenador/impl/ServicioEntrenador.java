@@ -1,7 +1,7 @@
 package com.fut5app.Servicios.Entrenador.impl;
 
 import com.fut5app.Dominio.Entrenador;
-import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
+import com.fut5app.Servicios.Entrada.Scanner.impl.ServicioEntrada;
 import com.fut5app.Servicios.Entrenador.IServicioEntrenador;
 
 import java.util.UUID;

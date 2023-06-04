@@ -1,4 +1,4 @@
-package com.fut5app.Servicios.Entrada;
+package com.fut5app.Servicios.Entrada.Archivo;
 
 import com.fut5app.Dominio.Equipo;
 import com.fut5app.Dominio.Jugador;

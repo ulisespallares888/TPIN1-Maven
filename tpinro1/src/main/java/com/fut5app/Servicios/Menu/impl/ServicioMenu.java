@@ -1,9 +1,9 @@
 package com.fut5app.Servicios.Menu.impl;
 
-import com.fut5app.Servicios.Entrada.IServicioEntradaArchivo;
+import com.fut5app.Servicios.Entrada.Archivo.IServicioEntradaArchivo;
 import com.fut5app.Servicios.Salida.IServicioSalida;
-import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
-import com.fut5app.Servicios.Entrada.impl.ServicioEntradaArchivo;
+import com.fut5app.Servicios.Entrada.Scanner.impl.ServicioEntrada;
+import com.fut5app.Servicios.Entrada.Archivo.impl.ServicioEntradaArchivo;
 import com.fut5app.Servicios.Equipo.IServicioEquipo;
 import com.fut5app.Servicios.Equipo.impl.ServicioEquipo;
 import com.fut5app.Servicios.Jugador.IServicioJugador;
@@ -22,7 +22,8 @@ public class ServicioMenu implements IMenu {
     public ServicioMenu() {
     }
 
-    public ServicioMenu(ServicioEquipo servicioEquipo, ServicioEntradaArchivo servicioEntradaArchivo, ServicioJugador servicioJugador, ServicioSalida sercivioSalida) {
+
+    public ServicioMenu(IServicioEquipo servicioEquipo, IServicioEntradaArchivo servicioEntradaArchivo, IServicioJugador servicioJugador, IServicioSalida sercivioSalida) {
         this.servicioEquipo = servicioEquipo;
         this.servicioEntradaArchivo = servicioEntradaArchivo;
         this.servicioJugador = servicioJugador;

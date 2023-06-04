@@ -2,11 +2,12 @@ package com.fut5app;
 
 import com.fut5app.DatosIniciales.DatosIniciales;
 import com.fut5app.Dominio.*;
-import com.fut5app.Servicios.Entrada.IServicioEntradaArchivo;
-import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
-import com.fut5app.Servicios.Entrada.impl.ServicioEntradaArchivo;
+import com.fut5app.Servicios.Entrada.Archivo.IServicioEntradaArchivo;
+import com.fut5app.Servicios.Entrada.Scanner.impl.ServicioEntrada;
+import com.fut5app.Servicios.Entrada.Archivo.impl.ServicioEntradaArchivo;
 import com.fut5app.Servicios.Equipo.IServicioEquipo;
 import com.fut5app.Servicios.Equipo.impl.ServicioEquipo;
+import com.fut5app.Servicios.InyeccionDependencia.InyeccionDependencia;
 import com.fut5app.Servicios.Jugador.IServicioJugador;
 import com.fut5app.Servicios.Jugador.impl.ServicioJugador;
 import com.fut5app.Servicios.Menu.IMenu;
@@ -24,15 +25,12 @@ public class App
     {
         ServicioEntrada.createScanner();
 
-        IServicioEquipo servicioEquipo = new ServicioEquipo();
-        IServicioEntradaArchivo servicioEntradaArchivo = new ServicioEntradaArchivo();
-        IServicioJugador servicioJugador = new ServicioJugador();
-        IServicioSalida sercivioSalida = new ServicioSalida();
+        InyeccionDependencia.inyectarDependencias();
 
-        IMenu IServicioMenu = new ServicioMenu((ServicioEquipo) servicioEquipo,
-                                                (ServicioEntradaArchivo) servicioEntradaArchivo,
-                                                (ServicioJugador) servicioJugador,
-                                                (ServicioSalida) sercivioSalida);
+        IMenu IServicioMenu = new ServicioMenu(InyeccionDependencia.servicioEquipo,
+                                                InyeccionDependencia.servicioEntradaArchivo,
+                                                InyeccionDependencia.servicioJugador,
+                                                InyeccionDependencia.sercivioSalida);
         IServicioMenu.mostrarMenu();
 
         ServicioEntrada.closeScanner();
