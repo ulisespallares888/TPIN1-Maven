@@ -1,13 +1,34 @@
 package com.fut5app.Servicios.Menu.impl;
 
+import com.fut5app.Servicios.Entrada.IServicioEntradaArchivo;
+import com.fut5app.Servicios.Salida.IServicioSalida;
 import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
+import com.fut5app.Servicios.Entrada.impl.ServicioEntradaArchivo;
+import com.fut5app.Servicios.Equipo.IServicioEquipo;
 import com.fut5app.Servicios.Equipo.impl.ServicioEquipo;
+import com.fut5app.Servicios.Jugador.IServicioJugador;
 import com.fut5app.Servicios.Jugador.impl.ServicioJugador;
 import com.fut5app.Servicios.Menu.IMenu;
-import com.fut5app.Servicios.Salida.impl.SercivioSalida;
+import com.fut5app.Servicios.Salida.impl.ServicioSalida;
+
 
 
 public class ServicioMenu implements IMenu {
+    private IServicioEquipo servicioEquipo = new ServicioEquipo();
+    private IServicioEntradaArchivo servicioEntradaArchivo = new ServicioEntradaArchivo();
+    private IServicioJugador servicioJugador = new ServicioJugador();
+    private IServicioSalida sercivioSalida = new ServicioSalida();
+
+    public ServicioMenu() {
+    }
+
+    public ServicioMenu(ServicioEquipo servicioEquipo, ServicioEntradaArchivo servicioEntradaArchivo, ServicioJugador servicioJugador, ServicioSalida sercivioSalida) {
+        this.servicioEquipo = servicioEquipo;
+        this.servicioEntradaArchivo = servicioEntradaArchivo;
+        this.servicioJugador = servicioJugador;
+        this.sercivioSalida = sercivioSalida;
+    }
+
     @Override
     public void mostrarMenu(){
 
@@ -24,6 +45,7 @@ public class ServicioMenu implements IMenu {
             System.out.println("8 : Eliminar equipo.");
             System.out.println("9 : Eliminar un jugador de un equipo.");
             System.out.println("10 : Exportar equipo.");
+            System.out.println("11 : Mostrar todos los equipos.");
             System.out.println("Ingrese # para salir ");
             System.out.println("----------------------------------------------------------------------------------------------------------");
             opcion = ServicioEntrada.getScanner().nextLine();
@@ -35,10 +57,9 @@ public class ServicioMenu implements IMenu {
     private void tomarOpcion(String opcion) {
         switch (opcion){
             case "1":{
-                ServicioEquipo servicioEquipo = new ServicioEquipo();
                 String opcionCreacionEquipos = "";
                 while(!opcionCreacionEquipos.equals("#")){
-                    servicioEquipo.crearEquipo();
+                    this.servicioEquipo.crearEquipo();
                     System.out.println("¿Desea seguir con la carga de equipos? ");
                     System.out.println("1 : Si - 2 : No ");
                     opcionCreacionEquipos = (ServicioEntrada.getScanner().nextLine().equals("1")) ? "" : "#";
@@ -46,57 +67,52 @@ public class ServicioMenu implements IMenu {
                 break;
             }
             case "2":{
-                ServicioJugador servicioJugador = new ServicioJugador();
                 System.out.println("Ingrese nombre del jugador a buscar");
-                servicioJugador.mostrarJugador(ServicioEntrada.getScanner().nextLine());
+                this.servicioJugador.mostrarJugador(ServicioEntrada.getScanner().nextLine());
                 break;
             }
             case "3":{
-                ServicioEquipo servicioEquipo = new ServicioEquipo();
+
                 System.out.println("Ingrese nombre del equipo a buscar");
-                servicioEquipo.mostrarEquipoCapitan(ServicioEntrada.getScanner().nextLine());
+                this.servicioEquipo.mostrarEquipoCapitan(ServicioEntrada.getScanner().nextLine());
                 break;
             }
             case "4":{
-                ServicioEquipo servicioEquipo = new ServicioEquipo();
                 System.out.println("Ingrese nombre del equipo a buscar");
-                servicioEquipo.mostrarEquipo(ServicioEntrada.getScanner().nextLine());
+                this.servicioEquipo.mostrarEquipo(ServicioEntrada.getScanner().nextLine());
                 break;
             }
             case "5":{
-                ServicioEquipo servicioEquipo = new ServicioEquipo();
                 System.out.println("Ingrese nombre del equipo a buscar");
-                servicioEquipo.mostrarEquipoOrdenadoPorNombre(ServicioEntrada.getScanner().nextLine());
+                this.servicioEquipo.mostrarEquipoOrdenadoPorNombre(ServicioEntrada.getScanner().nextLine());
                 break;
             }
             case "6":{
-                ServicioEquipo servicioEquipo = new ServicioEquipo();
                 System.out.println("Ingrese nombre del equipo a buscar");
-                servicioEquipo.mostrarEquipoOrdenadoPorCamiseta(ServicioEntrada.getScanner().nextLine());
+                this.servicioEquipo.mostrarEquipoOrdenadoPorCamiseta(ServicioEntrada.getScanner().nextLine());
                 break;
             }
             case "7":{
-                ServicioEquipo servicioEquipo = new ServicioEquipo();
                 System.out.println("Ingrese nombre del equipo a buscar");
-                servicioEquipo.mostrarEquipoOrdenadoPorPosicionYCamiseta(ServicioEntrada.getScanner().nextLine());
+                this.servicioEquipo.mostrarEquipoOrdenadoPorPosicionYCamiseta(ServicioEntrada.getScanner().nextLine());
                 break;
             }
             case "8":{
-                ServicioEquipo servicioEquipo = new ServicioEquipo();
-                System.out.println("Ingrese nombre del equipo a buscar");
-                servicioEquipo.eliminarEquipo(ServicioEntrada.getScanner().nextLine());
+                System.out.println("Ingrese nombre del equipo a eliminar");
+                this.servicioEquipo.eliminarEquipo(ServicioEntrada.getScanner().nextLine());
                 break;
             }
             case "9":{
-                ServicioJugador servicioJugador = new ServicioJugador();
-                servicioJugador.eliminarJugador();
+                this.servicioJugador.eliminarJugador();
                 break;
             }
             case "10":{
-                SercivioSalida sercivioSalida = new SercivioSalida();
-                ServicioEquipo servicioEquipo = new ServicioEquipo();
                 System.out.println("Ingrese nombre del equipo a exportar");
-                sercivioSalida.exportarAchivo(servicioEquipo.buscarEquipo(ServicioEntrada.getScanner().nextLine()));
+                this.sercivioSalida.exportarAchivo(this.servicioEquipo.buscarEquipo(ServicioEntrada.getScanner().nextLine()));
+                break;
+            }
+            case "11":{
+                this.servicioEquipo.mostrarTodosLosEquipos();
                 break;
             }
         }

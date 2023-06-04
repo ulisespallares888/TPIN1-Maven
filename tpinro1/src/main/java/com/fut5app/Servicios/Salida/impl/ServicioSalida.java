@@ -9,9 +9,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.UUID;
 
-public class SercivioSalida implements IServicioSalida {
+public class ServicioSalida implements IServicioSalida {
 
-
+    @Override
     public void exportarAchivo(Equipo equipo){
         System.out.println("Ingrese una opcion");
         System.out.println("1 : Exportar archivo tipo txt");

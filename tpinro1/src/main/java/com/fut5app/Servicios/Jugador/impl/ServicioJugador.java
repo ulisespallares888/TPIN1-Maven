@@ -27,9 +27,7 @@ public class ServicioJugador implements IServicioJugador {
         System.out.println("Ingrese altura del jugador");
         jugador.setAltura(ServicioEntrada.getScanner().nextDouble());
         System.out.println("Ingrese posición del jugador");
-
         ServicioPosicion.mostrarPosiciones(ServicioPosicion.formacionEligida);
-
         jugador.setPosicion(ServicioPosicion.crearPosicion(ServicioEntrada.getScanner().nextInt()));
         System.out.println("Ingrese cantidad de goles del jugador");
         jugador.setCantGoles(ServicioEntrada.getScanner().nextInt());
@@ -37,7 +35,6 @@ public class ServicioJugador implements IServicioJugador {
         jugador.setCanttPartidos(ServicioEntrada.getScanner().nextInt());
         ServicioEntrada.getScanner().nextLine();
         controlCapitan(equipo,jugador);
-
         System.out.println("Ingrese numero de camiseta del jugador");
         jugador.setNroCamiseta(controlCamisetas(equipo,ServicioEntrada.getScanner().nextInt()));
         ServicioEntrada.getScanner().nextLine();
@@ -98,7 +95,6 @@ public class ServicioJugador implements IServicioJugador {
                 }
             }
         }
-
         return listJug;
     }
     @Override
@@ -109,7 +105,8 @@ public class ServicioJugador implements IServicioJugador {
                 System.out.println("Nombre : " + jugador.getNombre());
                 System.out.println("Apellido : " + jugador.getApellido());
                 System.out.println("Posicion : " + jugador.getPosicion());
-                if(jugador.isCapitan()){ System.out.println("Es capitan : Si"); }else {System.out.println("Es capitan : No"); }
+                if(jugador.isCapitan()){ System.out.println("Es capitan : Si");
+                } else {System.out.println("Es capitan : No");}
                 System.out.println("Equipo : " + jugador.getEquipo().getNombre());
                 System.out.println("---------------");
             }
@@ -123,7 +120,7 @@ public class ServicioJugador implements IServicioJugador {
     public void eliminarJugador() {
         System.out.println("Ingrese nombre del jugador.");
         String jugador = ServicioEntrada.getScanner().nextLine();
-        System.out.println("Ingrese nombre equipo.");
+        System.out.println("Ingrese nombre del equipo.");
         String equipo = ServicioEntrada.getScanner().nextLine();
 
         ServicioEquipo servicioEquipo = new ServicioEquipo();

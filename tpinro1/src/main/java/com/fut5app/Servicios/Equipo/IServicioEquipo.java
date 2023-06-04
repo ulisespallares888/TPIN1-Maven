@@ -8,6 +8,8 @@ public interface IServicioEquipo {
     void eliminarEquipo(String nombre);
     void cargarEntrenador(Equipo equipo);
      void cargarJugadores(Equipo equipo);
+    void mostrarEquipo(String equipoNombre);
+    void mostrarTodosLosEquipos();
     void mostrarEquipoCapitan(String equipo);
     void mostrarEquipoOrdenadoPorNombre(String equipoNombre);
     void mostrarEquipoOrdenadoPorCamiseta(String equipoNombre);

@@ -9,7 +9,7 @@ import java.util.UUID;
 public class ServicioEntrenador implements IServicioEntrenador {
     @Override
     public Entrenador crearEntrenador() {
-
+        System.out.println("****** Carga de entrenador ****** ");
         Entrenador entrenador = new Entrenador();
         entrenador.setId(UUID.randomUUID());
         System.out.println("Ingrese el nombre del entrenador");

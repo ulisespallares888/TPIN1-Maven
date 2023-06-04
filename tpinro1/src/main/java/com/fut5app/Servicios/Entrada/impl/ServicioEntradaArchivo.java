@@ -3,8 +3,8 @@ package com.fut5app.Servicios.Entrada.impl;
 import com.fut5app.Dominio.Equipo;
 import com.fut5app.Dominio.Jugador;
 import com.fut5app.Dominio.Posiciones;
-import com.fut5app.Servicios.Entrada.IServicioEntrada;
 
+import com.fut5app.Servicios.Entrada.IServicioEntradaArchivo;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.UUID;
 
 
-public class ServicioEntradaArchivo implements IServicioEntrada {
+public class ServicioEntradaArchivo implements IServicioEntradaArchivo {
 
-
+    @Override
     public List<Jugador> importarJugadores(String archivoRuta, Equipo equipo){
         List<Jugador> listJug = new ArrayList<>();
         List<String> listasplited = new ArrayList<>();

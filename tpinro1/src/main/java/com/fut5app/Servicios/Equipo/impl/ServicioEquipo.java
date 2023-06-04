@@ -1,14 +1,18 @@
 package com.fut5app.Servicios.Equipo.impl;
 
 import com.fut5app.Dominio.Equipo;
+import com.fut5app.Servicios.Entrada.IServicioEntradaArchivo;
 import com.fut5app.Servicios.Entrada.impl.ServicioEntrada;
 import com.fut5app.Servicios.Entrada.impl.ServicioEntradaArchivo;
+import com.fut5app.Servicios.Entrenador.IServicioEntrenador;
 import com.fut5app.Servicios.Entrenador.impl.ServicioEntrenador;
 import com.fut5app.Servicios.Equipo.IServicioEquipo;
+import com.fut5app.Servicios.Jugador.IServicioJugador;
 import com.fut5app.Servicios.Jugador.impl.ServicioJugador;
 import com.fut5app.Dominio.Jugador;
 import com.fut5app.Servicios.Posicion.impl.ServicioPosicion;
-import com.fut5app.Servicios.Salida.impl.SercivioSalida;
+import com.fut5app.Servicios.Salida.IServicioSalida;
+import com.fut5app.Servicios.Salida.impl.ServicioSalida;
 
 
 import java.time.LocalDate;
@@ -24,19 +28,52 @@ public class ServicioEquipo implements IServicioEquipo {
         System.out.println("****** Carga de equipo ****** ");
         Equipo equipoNuevo = new Equipo();
         equipoNuevo.setId(UUID.randomUUID());
-        System.out.println("Ingrese nombre del equipo");
-        equipoNuevo.setNombre(ServicioEntrada.getScanner().nextLine());
+
+        controlDeNombre(equipoNuevo);
+
         System.out.println("Ingrese fecha de creacion del equipo. Formato(DD-MM-AAAA)");
         equipoNuevo.setFechaDeCreacion(foramtearFecha(ServicioEntrada.getScanner().nextLine()));
 
         establecerTipoDeCarga(equipoNuevo);
 
-        System.out.println("****** Carga de entrenador ****** ");
         cargarEntrenador(equipoNuevo);
-        setearTodasLasListas(equipoNuevo);
+
+        setearListaEquipos(equipoNuevo);
+
         mostrarEquipo(equipoNuevo.getNombre());
     }
+    @Override
+    public void mostrarTodosLosEquipos(){
+        if(!listaEquipos.isEmpty()){
+            for (int i = 0; i<listaEquipos.size(); i++){
+                System.out.println(i+1 +" : " + listaEquipos.get(i).getNombre());
+            }
+        } else {
+            System.out.println("No hay equipos cargados");
+        }
 
+
+
+    }
+
+    private void controlDeNombre(Equipo equipoNuevo){
+        System.out.println("Ingrese nombre del equipo");
+        String nombre = ServicioEntrada.getScanner().nextLine();
+        if(buscarEquipo(nombre).getNombre() != null){
+            boolean seguir = true;
+            while (seguir){
+                System.out.println("Ya existe un equipo con ese nombre, ingrese otro.");
+                nombre = ServicioEntrada.getScanner().nextLine();
+                if (buscarEquipo(nombre).getNombre() == null) {
+                    seguir = false;
+                    equipoNuevo.setNombre(nombre);
+                }
+            }
+        }else{
+            equipoNuevo.setNombre(nombre);
+        }
+
+    }
 
     private void establecerTipoDeCarga(Equipo equipoNuevo){
         System.out.println("Tipo de carga");
@@ -44,32 +81,36 @@ public class ServicioEquipo implements IServicioEquipo {
         System.out.println("2 : Por importacion");
         String opcion = ServicioEntrada.getScanner().nextLine();
         if( opcion.equals("1")){
-            ServicioPosicion.mostrarFormaciones();
-            ServicioPosicion.elegirFomacion(ServicioEntrada.getScanner().nextInt());
-            System.out.println("****** Carga de jugadores ****** ");
-            ServicioEntrada.getScanner().nextLine();
-            cargarJugadores(equipoNuevo);
+            cargaManual(equipoNuevo);
         } else{
-            System.out.println("[Atencion] : El formato del archvo debe ser nombre, apellido, altura, posicion," +
-                    " cantidad de goles, cantidad de partidos, si es capitan(true/false) y numero de camiseta ");
-            System.out.println("Ingrese la ruta del archivo");
-            ServicioEntradaArchivo servicioEntradaArchivo = new ServicioEntradaArchivo();
-            equipoNuevo.setJugadores(servicioEntradaArchivo.importarJugadores(ServicioEntrada.getScanner().nextLine(),equipoNuevo));
+            cargaPorImportacion(equipoNuevo);
+          }
+    }
 
-        }
+    private void cargaManual(Equipo equipoNuevo){
+        ServicioPosicion.mostrarFormaciones();
+        ServicioPosicion.elegirFomacion(ServicioEntrada.getScanner().nextInt());
+        System.out.println("****** Carga de jugadores ****** ");
+        ServicioEntrada.getScanner().nextLine();
+        cargarJugadores(equipoNuevo);
+    }
+
+    private void cargaPorImportacion(Equipo equipoNuevo){
+        System.out.println("[Atencion] : El formato del archvo debe ser nombre, apellido, altura, posicion," +
+                " cantidad de goles, cantidad de partidos, si es capitan(true/false) y numero de camiseta ");
+        System.out.println("Ingrese la ruta del archivo");
+        IServicioEntradaArchivo servicioEntradaArchivo = new ServicioEntradaArchivo();
+        equipoNuevo.setJugadores(servicioEntradaArchivo.importarJugadores(ServicioEntrada.getScanner().nextLine(),equipoNuevo));
     }
 
     private LocalDate foramtearFecha(String fecha){
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate fechaFormateada = LocalDate.parse(fecha, formatter);
-
         return fechaFormateada;
     }
 
-    private void setearTodasLasListas(Equipo equipoNuevo){
+    private void setearListaEquipos(Equipo equipoNuevo){
         listaEquipos.add(equipoNuevo);
-
     }
 
 
@@ -102,7 +143,7 @@ public class ServicioEquipo implements IServicioEquipo {
         }
     }
 
-
+    @Override
     public void mostrarEquipo(String equipoNombre){
         Equipo equipo = new Equipo();
         equipo = buscarEquipo(equipoNombre);
@@ -121,7 +162,7 @@ public class ServicioEquipo implements IServicioEquipo {
 
     @Override
     public void cargarJugadores(Equipo equipo){
-        ServicioJugador servicioJugador = new ServicioJugador();
+        IServicioJugador servicioJugador = new ServicioJugador();
         for (int i=0; i<5; i++){
            equipo.setJugadores(servicioJugador.crearJugador(equipo));
         }
@@ -129,9 +170,8 @@ public class ServicioEquipo implements IServicioEquipo {
 
     @Override
     public void cargarEntrenador(Equipo equipo) {
-        ServicioEntrenador servicioEntrenador = new ServicioEntrenador();
+        IServicioEntrenador servicioEntrenador = new ServicioEntrenador();
         equipo.setEntrenador(servicioEntrenador.crearEntrenador());
-
     }
     @Override
     public void eliminarEquipo(String nombre) {
@@ -170,7 +210,7 @@ public class ServicioEquipo implements IServicioEquipo {
     private void opcionDeExportar(Equipo equipo, List<Jugador> listaOrdenada) {
         System.out.println("¿Desea exportar jugadores? 1 : Si - 2 : No");
         if (ServicioEntrada.getScanner().nextLine().equals("1")) {
-            SercivioSalida servicioSalida = new SercivioSalida();
+            IServicioSalida servicioSalida = new ServicioSalida();
             equipo.getJugadores().clear();
             equipo.setJugadores(listaOrdenada);
             servicioSalida.exportarAchivo(equipo);

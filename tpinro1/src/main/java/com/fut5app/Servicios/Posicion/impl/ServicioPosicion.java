@@ -11,15 +11,9 @@ public class ServicioPosicion implements IServicioPosicion {
     private static List< Posiciones> listaFormacion211 = new ArrayList<>();
     private static List< Posiciones>  listaFormacion121 =  new ArrayList<>();
     private static List< Posiciones>  listaFormacion22 =  new ArrayList<>();
-    private static List<List<Posiciones>> listaDeFormaciones = new ArrayList<>();
     public static List< Posiciones>  formacionEligida =  new ArrayList<>();
     public static boolean posicionCreada = false;
 
-    private void cargarFormaciones(){
-        listaDeFormaciones.add(listaFormacion211);
-        listaDeFormaciones.add(listaFormacion121);
-        listaDeFormaciones.add(listaFormacion22);
-    }
 
     private static List<Posiciones>  cargarFormacion211(){
         listaFormacion211.add(Posiciones.DEFENSOR);
@@ -45,7 +39,6 @@ public class ServicioPosicion implements IServicioPosicion {
         listaFormacion22.add( Posiciones.DELANTERO);
         return listaFormacion22;
     }
-
 
     private static List<Posiciones> cargarPosiciones(int formacion){
         if(!posicionCreada) {
