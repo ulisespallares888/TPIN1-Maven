@@ -19,9 +19,6 @@ public class ServicioMenu implements IMenu {
     private IServicioJugador servicioJugador = new ServicioJugador();
     private IServicioSalida sercivioSalida = new ServicioSalida();
 
-    public ServicioMenu() {
-    }
-
 
     public ServicioMenu(IServicioEquipo servicioEquipo, IServicioEntradaArchivo servicioEntradaArchivo, IServicioJugador servicioJugador, IServicioSalida sercivioSalida) {
         this.servicioEquipo = servicioEquipo;

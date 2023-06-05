@@ -31,8 +31,7 @@ public class ServicioEquipo implements IServicioEquipo {
 
         controlDeNombre(equipoNuevo);
 
-        System.out.println("Ingrese fecha de creacion del equipo. Formato(DD-MM-AAAA)");
-        equipoNuevo.setFechaDeCreacion(foramtearFecha(ServicioEntrada.getScanner().nextLine()));
+        cargarFecha(equipoNuevo);
 
         establecerTipoDeCarga(equipoNuevo);
 
@@ -42,6 +41,12 @@ public class ServicioEquipo implements IServicioEquipo {
 
         mostrarEquipo(equipoNuevo.getNombre());
     }
+
+    private void cargarFecha(Equipo equipoNuevo){
+        System.out.println("Ingrese fecha de creacion del equipo. Formato(DD-MM-AAAA)");
+        equipoNuevo.setFechaDeCreacion(foramtearFecha(ServicioEntrada.getScanner().nextLine()));
+    }
+
     @Override
     public void mostrarTodosLosEquipos(){
         if(!listaEquipos.isEmpty()){

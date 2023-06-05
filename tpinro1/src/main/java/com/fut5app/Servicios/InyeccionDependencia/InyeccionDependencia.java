@@ -10,10 +10,11 @@ import com.fut5app.Servicios.Salida.IServicioSalida;
 import com.fut5app.Servicios.Salida.impl.ServicioSalida;
 
 public class InyeccionDependencia {
-   public static IServicioEquipo servicioEquipo;
+    public static IServicioEquipo servicioEquipo;
     public static IServicioEntradaArchivo servicioEntradaArchivo;
     public static IServicioJugador servicioJugador;
     public static  IServicioSalida sercivioSalida;
+
     public static void inyectarDependencias(){
       servicioEquipo = new ServicioEquipo();
       servicioEntradaArchivo = new ServicioEntradaArchivo();

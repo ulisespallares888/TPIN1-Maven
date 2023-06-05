@@ -16,34 +16,58 @@ import static com.fut5app.App.listaEquipos;
 public class ServicioJugador implements IServicioJugador {
     @Override
     public Jugador crearJugador(Equipo equipo) {
-        Jugador jugador = new Jugador();
-        jugador.setId(UUID.randomUUID());
-        jugador.setEquipo(equipo);
-        System.out.println("****** Cargar un jugador ****** ");
-        System.out.println("Ingrese nombre del jugador");
-        jugador.setNombre(ServicioEntrada.getScanner().nextLine());
-        System.out.println("Ingrese apellido del jugador");
-        jugador.setApellido(ServicioEntrada.getScanner().nextLine());
-        System.out.println("Ingrese altura del jugador");
-        jugador.setAltura(ServicioEntrada.getScanner().nextDouble());
-        System.out.println("Ingrese posición del jugador");
-        ServicioPosicion.mostrarPosiciones(ServicioPosicion.formacionEligida);
-        jugador.setPosicion(ServicioPosicion.crearPosicion(ServicioEntrada.getScanner().nextInt()));
-        System.out.println("Ingrese cantidad de goles del jugador");
-        jugador.setCantGoles(ServicioEntrada.getScanner().nextInt());
-        System.out.println("Ingrese cantidad de partidos del jugador");
-        jugador.setCanttPartidos(ServicioEntrada.getScanner().nextInt());
-        ServicioEntrada.getScanner().nextLine();
-        controlCapitan(equipo,jugador);
-        System.out.println("Ingrese numero de camiseta del jugador");
-        jugador.setNroCamiseta(controlCamisetas(equipo,ServicioEntrada.getScanner().nextInt()));
-        ServicioEntrada.getScanner().nextLine();
-        System.out.println("--------------------------------");
+        Jugador jugadorNuevo = new Jugador();
+        jugadorNuevo.setId(UUID.randomUUID());
+        jugadorNuevo.setEquipo(equipo);
 
-        return jugador;
+        System.out.println("****** Cargar un jugador ****** ");
+        cargarNombre(jugadorNuevo);
+        cargarApellido(jugadorNuevo);
+        cargarAltura(jugadorNuevo);
+        cargarPosicion(jugadorNuevo);
+        cargarCantGoles(jugadorNuevo);
+        cargarCantPartidos(jugadorNuevo);
+        controlCapitan(equipo,jugadorNuevo);
+        controlCamisetas(equipo,jugadorNuevo);
+        System.out.println("--------------------------------");
+        return jugadorNuevo;
     }
 
-    private int controlCamisetas(Equipo equipo, int numeroCamiseta){
+
+    private void cargarNombre(Jugador jugadorNuevo){
+        System.out.println("Ingrese nombre del jugador");
+        jugadorNuevo.setNombre(ServicioEntrada.getScanner().nextLine());
+    }
+    private void cargarApellido(Jugador jugadorNuevo){
+        System.out.println("Ingrese apellido del jugador");
+        jugadorNuevo.setApellido(ServicioEntrada.getScanner().nextLine());
+    }
+
+    private void cargarAltura(Jugador jugadorNuevo){
+        System.out.println("Ingrese altura del jugador");
+        jugadorNuevo.setAltura(Double.parseDouble(ServicioEntrada.getScanner().nextLine()));
+    }
+
+    private void cargarPosicion(Jugador jugadorNuevo){
+        System.out.println("Ingrese posición del jugador");
+        ServicioPosicion.mostrarPosiciones(ServicioPosicion.formacionEligida);
+        jugadorNuevo.setPosicion(ServicioPosicion.crearPosicion(Integer.parseInt(ServicioEntrada.getScanner().nextLine())));
+    }
+
+    private void cargarCantGoles(Jugador jugadorNuevo){
+        System.out.println("Ingrese cantidad de goles del jugador");
+        jugadorNuevo.setCantGoles(Integer.parseInt(ServicioEntrada.getScanner().nextLine()));
+    }
+
+    private void cargarCantPartidos(Jugador jugadorNuevo){
+        System.out.println("Ingrese cantidad de partidos del jugador");
+        jugadorNuevo.setCanttPartidos(Integer.parseInt(ServicioEntrada.getScanner().nextLine()));
+    }
+
+
+    private void controlCamisetas(Equipo equipo, Jugador jugadorNuevo){
+        System.out.println("Ingrese numero de camiseta del jugador");
+        int numeroCamiseta = Integer.parseInt(ServicioEntrada.getScanner().nextLine());
 
         boolean mismaCamiseta = false;
         boolean seguir = true;
@@ -55,14 +79,13 @@ public class ServicioJugador implements IServicioJugador {
             }
             if (mismaCamiseta){
                 System.out.println("El numero de camiseta ingreado ya esta ocupado elija otro.");
-                numeroCamiseta = ServicioEntrada.getScanner().nextInt();
+                numeroCamiseta = Integer.parseInt(ServicioEntrada.getScanner().nextLine());
                 mismaCamiseta = false;
             }else {
+                jugadorNuevo.setNroCamiseta(numeroCamiseta);
                 seguir = false;
-                return  numeroCamiseta;
             }
         }
-        return  numeroCamiseta;
     }
 
     private void controlCapitan(Equipo equipo, Jugador jugador){

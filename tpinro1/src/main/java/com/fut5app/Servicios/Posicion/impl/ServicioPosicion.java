@@ -8,10 +8,10 @@ import java.util.List;
 
 
 public class ServicioPosicion implements IServicioPosicion {
-    private static List< Posiciones> listaFormacion211 = new ArrayList<>();
-    private static List< Posiciones>  listaFormacion121 =  new ArrayList<>();
-    private static List< Posiciones>  listaFormacion22 =  new ArrayList<>();
-    public static List< Posiciones>  formacionEligida =  new ArrayList<>();
+    private static List<Posiciones>  listaFormacion211 = new ArrayList<>();
+    private static List<Posiciones>  listaFormacion121 =  new ArrayList<>();
+    private static List<Posiciones>  listaFormacion22 =  new ArrayList<>();
+    public static  List< Posiciones>  formacionEligida =  new ArrayList<>();
     public static boolean posicionCreada = false;
 
 
