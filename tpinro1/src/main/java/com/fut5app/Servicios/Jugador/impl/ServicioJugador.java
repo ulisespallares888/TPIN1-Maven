@@ -14,6 +14,10 @@ import java.util.UUID;
 import static com.fut5app.App.listaEquipos;
 
 public class ServicioJugador implements IServicioJugador {
+
+    public ServicioJugador() {
+    }
+
     @Override
     public Jugador crearJugador(Equipo equipo) {
         Jugador jugadorNuevo = new Jugador();

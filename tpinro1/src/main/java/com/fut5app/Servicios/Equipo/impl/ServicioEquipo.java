@@ -23,6 +23,10 @@ import java.time.format.DateTimeFormatter;
 
 import static com.fut5app.App.listaEquipos;
 public class ServicioEquipo implements IServicioEquipo {
+
+    public ServicioEquipo() {
+    }
+
     @Override
     public void crearEquipo() {
         System.out.println("****** Carga de equipo ****** ");
@@ -176,7 +180,9 @@ public class ServicioEquipo implements IServicioEquipo {
         equipo.setEntrenador(servicioEntrenador.crearEntrenador());
     }
     @Override
-    public void eliminarEquipo(String nombre) {
+    public void eliminarEquipo() {
+        System.out.println("Ingrese nombre del equipo a eliminar");
+        String nombre = ServicioEntrada.getScanner().nextLine();
         boolean equipoEiminado = listaEquipos.remove(buscarEquipo(nombre));
 
         if(equipoEiminado){

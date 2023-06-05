@@ -17,6 +17,9 @@ import java.util.UUID;
 
 public class ServicioEntradaArchivo implements IServicioEntradaArchivo {
 
+    public ServicioEntradaArchivo() {
+    }
+
     @Override
     public List<Jugador> importarJugadores(String archivoRuta, Equipo equipo){
         List<Jugador> listJug = new ArrayList<>();

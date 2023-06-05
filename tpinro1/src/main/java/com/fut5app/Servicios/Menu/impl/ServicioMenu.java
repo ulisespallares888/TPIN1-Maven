@@ -1,35 +1,26 @@
 package com.fut5app.Servicios.Menu.impl;
 
-import com.fut5app.Servicios.Entrada.Archivo.IServicioEntradaArchivo;
 import com.fut5app.Servicios.Salida.IServicioSalida;
 import com.fut5app.Servicios.Entrada.Scanner.impl.ServicioEntrada;
-import com.fut5app.Servicios.Entrada.Archivo.impl.ServicioEntradaArchivo;
 import com.fut5app.Servicios.Equipo.IServicioEquipo;
-import com.fut5app.Servicios.Equipo.impl.ServicioEquipo;
 import com.fut5app.Servicios.Jugador.IServicioJugador;
-import com.fut5app.Servicios.Jugador.impl.ServicioJugador;
 import com.fut5app.Servicios.Menu.IMenu;
-import com.fut5app.Servicios.Salida.impl.ServicioSalida;
-
 
 
 public class ServicioMenu implements IMenu {
-    private IServicioEquipo servicioEquipo = new ServicioEquipo();
-    private IServicioEntradaArchivo servicioEntradaArchivo = new ServicioEntradaArchivo();
-    private IServicioJugador servicioJugador = new ServicioJugador();
-    private IServicioSalida sercivioSalida = new ServicioSalida();
+    private  IServicioEquipo servicioEquipo;
+    private  IServicioJugador servicioJugador;
+    private  IServicioSalida servicioSalida;
 
 
-    public ServicioMenu(IServicioEquipo servicioEquipo, IServicioEntradaArchivo servicioEntradaArchivo, IServicioJugador servicioJugador, IServicioSalida sercivioSalida) {
+    public ServicioMenu(IServicioEquipo servicioEquipo, IServicioJugador servicioJugador, IServicioSalida servicioSalida) {
         this.servicioEquipo = servicioEquipo;
-        this.servicioEntradaArchivo = servicioEntradaArchivo;
         this.servicioJugador = servicioJugador;
-        this.sercivioSalida = sercivioSalida;
+        this.servicioSalida = servicioSalida;
     }
 
     @Override
     public void mostrarMenu(){
-
         String opcion = "";
         while (!opcion.equals("#")){
             System.out.println("----------------------------------------------------------------------------------------------------------");
@@ -49,70 +40,112 @@ public class ServicioMenu implements IMenu {
             opcion = ServicioEntrada.getScanner().nextLine();
             tomarOpcion(opcion);
         }
-
     }
 
     private void tomarOpcion(String opcion) {
         switch (opcion){
             case "1":{
-                String opcionCreacionEquipos = "";
-                while(!opcionCreacionEquipos.equals("#")){
-                    this.servicioEquipo.crearEquipo();
-                    System.out.println("¿Desea seguir con la carga de equipos? ");
-                    System.out.println("1 : Si - 2 : No ");
-                    opcionCreacionEquipos = (ServicioEntrada.getScanner().nextLine().equals("1")) ? "" : "#";
-                }
+                crearEquipos();
                 break;
             }
             case "2":{
-                System.out.println("Ingrese nombre del jugador a buscar");
-                this.servicioJugador.mostrarJugador(ServicioEntrada.getScanner().nextLine());
+                buscarJugador();
                 break;
             }
             case "3":{
-
-                System.out.println("Ingrese nombre del equipo a buscar");
-                this.servicioEquipo.mostrarEquipoCapitan(ServicioEntrada.getScanner().nextLine());
+                mostrarEquipoCapitan();
                 break;
             }
             case "4":{
-                System.out.println("Ingrese nombre del equipo a buscar");
-                this.servicioEquipo.mostrarEquipo(ServicioEntrada.getScanner().nextLine());
+                mostrarEquipoJugadores();
                 break;
             }
             case "5":{
-                System.out.println("Ingrese nombre del equipo a buscar");
-                this.servicioEquipo.mostrarEquipoOrdenadoPorNombre(ServicioEntrada.getScanner().nextLine());
+                mostrarEquipoOrdenadoPorNombre();
                 break;
             }
             case "6":{
-                System.out.println("Ingrese nombre del equipo a buscar");
-                this.servicioEquipo.mostrarEquipoOrdenadoPorCamiseta(ServicioEntrada.getScanner().nextLine());
+                mostrarEquipoOrdenadoPorCamiseta();
                 break;
             }
             case "7":{
-                System.out.println("Ingrese nombre del equipo a buscar");
-                this.servicioEquipo.mostrarEquipoOrdenadoPorPosicionYCamiseta(ServicioEntrada.getScanner().nextLine());
+                mostrarEquipoOrdenadoPorPosicionYCamiseta();
                 break;
             }
             case "8":{
-                System.out.println("Ingrese nombre del equipo a eliminar");
-                this.servicioEquipo.eliminarEquipo(ServicioEntrada.getScanner().nextLine());
+                eliminarEquipo();
                 break;
             }
             case "9":{
-                this.servicioJugador.eliminarJugador();
+                eliminarJugador();
                 break;
             }
             case "10":{
-                System.out.println("Ingrese nombre del equipo a exportar");
-                this.sercivioSalida.exportarAchivo(this.servicioEquipo.buscarEquipo(ServicioEntrada.getScanner().nextLine()));
+                exportarJugadores();
                 break;
             }
             case "11":{
-                this.servicioEquipo.mostrarTodosLosEquipos();
+                mostrarTodosLosEquipos();
                 break;
             }
         }
     }
+
+    private void crearEquipos(){
+        String opcionCreacionEquipos = "";
+        while(!opcionCreacionEquipos.equals("#")){
+            this.servicioEquipo.crearEquipo();
+            System.out.println("¿Desea seguir con la carga de equipos? ");
+            System.out.println("1 : Si - 2 : No ");
+            opcionCreacionEquipos = (ServicioEntrada.getScanner().nextLine().equals("1")) ? "" : "#";
+        }
+    }
+
+    private void buscarJugador(){
+        System.out.println("Ingrese nombre del jugador a buscar");
+        this.servicioJugador.mostrarJugador(ServicioEntrada.getScanner().nextLine());
+    }
+
+    private void mostrarEquipoCapitan(){
+        System.out.println("Ingrese nombre del equipo a buscar");
+        this.servicioEquipo.mostrarEquipoCapitan(ServicioEntrada.getScanner().nextLine());
+    }
+
+    private void mostrarEquipoJugadores(){
+        System.out.println("Ingrese nombre del equipo a buscar");
+        this.servicioEquipo.mostrarEquipo(ServicioEntrada.getScanner().nextLine());
+    }
+
+    private void mostrarEquipoOrdenadoPorNombre(){
+        System.out.println("Ingrese nombre del equipo a buscar");
+        this.servicioEquipo.mostrarEquipoOrdenadoPorNombre(ServicioEntrada.getScanner().nextLine());
+    }
+
+    private void mostrarEquipoOrdenadoPorCamiseta(){
+        System.out.println("Ingrese nombre del equipo a buscar");
+        this.servicioEquipo.mostrarEquipoOrdenadoPorCamiseta(ServicioEntrada.getScanner().nextLine());
+    }
+
+    private void mostrarEquipoOrdenadoPorPosicionYCamiseta(){
+        System.out.println("Ingrese nombre del equipo a buscar");
+        this.servicioEquipo.mostrarEquipoOrdenadoPorPosicionYCamiseta(ServicioEntrada.getScanner().nextLine());
+    }
+
+    private void eliminarEquipo(){
+        this.servicioEquipo.eliminarEquipo();
+    }
+
+    private void eliminarJugador(){
+        this.servicioJugador.eliminarJugador();
+    }
+
+    private void exportarJugadores(){
+        System.out.println("Ingrese nombre del equipo a exportar");
+        this.servicioSalida.exportarAchivo(this.servicioEquipo.buscarEquipo(ServicioEntrada.getScanner().nextLine()));
+    }
+
+    private void mostrarTodosLosEquipos(){
+        this.servicioEquipo.mostrarTodosLosEquipos();
+    }
+
 }

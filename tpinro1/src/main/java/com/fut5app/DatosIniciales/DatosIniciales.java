@@ -34,7 +34,6 @@ public class DatosIniciales {
     }
 
 
-
     private static void cargarJugadores(){
         cargarEntrenadores();
         List<Jugador> listaJugadoresE1 = new ArrayList<>();
