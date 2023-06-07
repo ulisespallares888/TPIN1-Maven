@@ -104,7 +104,7 @@ public class ServicioEquipo implements IServicioEquipo {
     private void cargaPorImportacion(Equipo equipoNuevo){
         System.out.println("[Atencion] : El formato del archvo debe ser nombre, apellido, altura, posicion," +
                 " cantidad de goles, cantidad de partidos, si es capitan(true/false) y numero de camiseta ");
-        System.out.println("Ingrese la ruta del archivo");
+        System.out.println("Ingrese la ruta absoluta del archivo.");
         IServicioEntradaArchivo servicioEntradaArchivo = new ServicioEntradaArchivo();
         equipoNuevo.setJugadores(servicioEntradaArchivo.importarJugadores(ServicioEntrada.getScanner().nextLine(),equipoNuevo));
     }
