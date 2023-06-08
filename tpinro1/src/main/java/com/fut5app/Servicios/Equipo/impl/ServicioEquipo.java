@@ -15,6 +15,7 @@ import com.fut5app.Servicios.Salida.IServicioSalida;
 import com.fut5app.Servicios.Salida.impl.ServicioSalida;
 
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -124,7 +125,7 @@ public class ServicioEquipo implements IServicioEquipo {
     public Equipo buscarEquipo(String nombre) {
         Equipo equipoEncontrado = new Equipo();
         for (Equipo equipo: listaEquipos ) {
-            if(equipo.getNombre().equals(nombre)){
+            if(equipo.getNombre().toLowerCase().equals(nombre.toLowerCase())){
                 equipoEncontrado = equipo;
              }
         }

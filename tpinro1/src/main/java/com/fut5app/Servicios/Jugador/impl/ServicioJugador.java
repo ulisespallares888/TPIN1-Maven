@@ -117,7 +117,7 @@ public class ServicioJugador implements IServicioJugador {
         List<Jugador> listJug = new ArrayList<>();
         for (Equipo equipos: listaEquipos ) {
             for (Jugador jugador: equipos.getJugadores() ) {
-                if(jugador.getNombre().equals(nombreJugador) ) {
+                if(jugador.getNombre().toLowerCase().equals(nombreJugador.toLowerCase()) ) {
                     listJug.add(jugador);
                 }
             }
